@@ -1,6 +1,12 @@
 # 天津大学课程共享计划
 
-![GitHub watchers](https://img.shields.io/github/watchers/SuperPung/TJU-CourseSharing?style=plastic)[![GitHub stars](https://img.shields.io/github/stars/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/stargazers)[![GitHub forks](https://img.shields.io/github/forks/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/network)[![GitHub issues](https://img.shields.io/github/issues/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/issues)![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/SuperPung/TJU-CourseSharing)[![GitHub license](https://img.shields.io/github/license/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/blob/main/LICENSE)![GitHub repo size](https://img.shields.io/github/repo-size/SuperPung/TJU-CourseSharing)
+![GitHub watchers](https://img.shields.io/github/watchers/SuperPung/TJU-CourseSharing?style=plastic)
+[![GitHub stars](https://img.shields.io/github/stars/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/network)
+[![GitHub issues](https://img.shields.io/github/issues/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/issues)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/SuperPung/TJU-CourseSharing)
+[![GitHub license](https://img.shields.io/github/license/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/blob/main/LICENSE)
+![GitHub repo size](https://img.shields.io/github/repo-size/SuperPung/TJU-CourseSharing)
 
 ## 前言
 
