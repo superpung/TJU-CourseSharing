@@ -1,0 +1,26 @@
+GAME := typing
+#GAME := nemu-pal
+
+game_CFLAGS_EXTRA := -m32 -O2 -fno-builtin -fno-omit-frame-pointer -fno-stack-protector \
+						-Wno-format -I$(LIB_COMMON_DIR) -I$(LIBC_INC_DIR)\
+						-Igame/src/$(GAME)/include
+$(eval $(call make_common_rules,game,$(game_CFLAGS_EXTRA)))
+
+# redefine game_OBJS
+game_OBJS := $(filter $(game_OBJ_DIR)/common/% $(game_OBJ_DIR)/$(GAME)/%,$(game_OBJS))
+game_LDFLAGS := -m elf_i386
+
+game_ALL_OBJS := $(LIBC_LIB_DIR)/crt1.o \
+				 $(LIBC_LIB_DIR)/crti.o \
+				 $(game_OBJS) \
+				 $(FLOAT) \
+				 $(LIBC) \
+				 $(LIBC_LIB_DIR)/crtn.o
+
+$(game_BIN): $(game_ALL_OBJS)
+	$(call make_command, $(LD), $(game_LDFLAGS), ld $@, $^)
+	$(call git_commit, "compile game")
+ifeq ($(GAME),nemu-pal)
+	dd if=/dev/null of=$@ seek=2048
+	cat `find $(game_SRC_DIR)/nemu-pal/data -type f | sort` >> $@
+endif

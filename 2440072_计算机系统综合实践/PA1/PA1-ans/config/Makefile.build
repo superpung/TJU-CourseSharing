@@ -1,0 +1,33 @@
+# prototype: make_command(program, flags, msg, input)
+define make_command
+@echo + $(3)
+@mkdir -p $(@D)
+@$(1) -o $@ $(4) $(2) 
+endef
+
+# prototype: make_common_rules(target, cflags_extra)
+define make_common_rules
+$(1)_SRC_DIR := $(1)/src
+$(1)_INC_DIR := $(1)/include
+$(1)_OBJ_DIR := obj/$(1)
+
+$(1)_CFILES := $$(shell find $$($(1)_SRC_DIR) -name "*.c")
+$(1)_SFILES := $$(shell find $$($(1)_SRC_DIR) -name "*.S")
+
+$(1)_COBJS := $$(patsubst $$($(1)_SRC_DIR)%.c,$$($(1)_OBJ_DIR)%.o,$$($(1)_CFILES))
+$(1)_SOBJS := $$(patsubst $$($(1)_SRC_DIR)%.S,$$($(1)_OBJ_DIR)%.o,$$($(1)_SFILES))
+$(1)_OBJS := $$($(1)_SOBJS) $$($(1)_COBJS)
+
+$(1)_BIN := $$($(1)_OBJ_DIR)/$(1)
+
+$(1)_CFLAGS = $(CFLAGS) -I$$($(1)_INC_DIR) $(2)
+$(1)_ASFLAGS = -m32 -MMD -c -I$$($(1)_INC_DIR) -I$(LIB_COMMON_DIR)
+
+$$($(1)_OBJ_DIR)%.o: $$($(1)_SRC_DIR)%.c
+	$$(call make_command, $(CC), $$($(1)_CFLAGS), cc $$<, $$<)
+
+$$($(1)_OBJ_DIR)%.o: $$($(1)_SRC_DIR)%.S
+	$$(call make_command, $(CC), $$($(1)_ASFLAGS), as $$<, $$<)
+
+-include $$($(1)_OBJS:.o=.d)
+endef

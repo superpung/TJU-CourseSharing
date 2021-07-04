@@ -1,0 +1,1 @@
+进行PA2实验室，最终通过"make test"命令进行测试时，testcase/src文件夹下不能包含hello-inline-asm.c，hello.c和print-FLOAT.c三个程序。PA2阶段的必做任务无法支持这三个程序的运行。

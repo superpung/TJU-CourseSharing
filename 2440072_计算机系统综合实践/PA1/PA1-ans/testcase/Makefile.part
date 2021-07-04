@@ -1,0 +1,45 @@
+testcase_CFLAGS_EXTRA := -m32 -fno-builtin -fno-stack-protector \
+						-Wno-format -I$(LIB_COMMON_DIR) -I$(LIBC_INC_DIR)
+
+$(eval $(call make_common_rules,testcase,$(testcase_CFLAGS_EXTRA)))
+
+# redefine testcase_BIN
+testcase_BIN := $(testcase_COBJS:.o=)
+testcase_START_OBJ := $(testcase_OBJ_DIR)/start.o
+testcase_LDFLAGS := -m elf_i386 -T testcase/user.ld
+
+$(testcase_BIN): % : $(testcase_START_OBJ) %.o $(FLOAT) $(LIBC)
+	$(call make_command, $(LD), $(testcase_LDFLAGS), ld $@, $^)
+	@objdump -d $@ > $@.txt
+
+$(testcase_OBJ_DIR)/mov: % : %.o
+	$(call make_command, $(LD), -m elf_i386 -Ttext=0x100000, ld $@, $^)
+	@objdump -d $@ > $@.txt
+
+# We use -O2 to compile these two source files to eliminate floating
+# point instructions. gcc 6 will generate floating point instructions
+# for passing floating point arguments with -O0.
+$(testcase_OBJ_DIR)/integral.o: testcase/src/integral.c
+	$(call make_command, $(CC), $(testcase_CFLAGS) -O2, cc $@, $<)
+
+$(testcase_OBJ_DIR)/quadratic-eq.o: testcase/src/quadratic-eq.c
+	$(call make_command, $(CC), $(testcase_CFLAGS) -O2, cc $@, $<)
+
+
+# These rules are used to generate print-FLOAT program run under
+# GNU/Linux run-time.
+$(testcase_OBJ_DIR)/print-FLOAT-linux.o: testcase/src/print-FLOAT.c
+	$(call make_command, $(CC), $(testcase_CFLAGS) -DLINUX_RT, cc $@, $<)
+
+$(testcase_OBJ_DIR)/print-FLOAT-linux: % : \
+	$(LIBC_LIB_DIR)/crt1.o \
+	$(LIBC_LIB_DIR)/crti.o \
+	%.o \
+	$(FLOAT) \
+	$(LIBC) \
+	$(LIBC_LIB_DIR)/crtn.o
+	$(call make_command, $(LD), -m elf_i386, ld $@, $^)
+
+pa2-7: $(testcase_OBJ_DIR)/print-FLOAT-linux
+
+.PHONY: pa2-7

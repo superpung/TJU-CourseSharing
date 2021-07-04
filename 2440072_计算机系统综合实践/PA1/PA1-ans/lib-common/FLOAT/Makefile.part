@@ -1,0 +1,16 @@
+# This file will be included by the Makefile under the project directory.
+
+FLOAT_O := $(FLOAT:.a=.o)
+FLOAT_VFPRINTF_O := $(dir $(FLOAT))FLOAT_vfprintf.o
+
+FLOAT_A_OBJ := $(FLOAT_O) $(FLOAT_VFPRINTF_O)
+
+$(FLOAT): $(FLOAT_A_OBJ)
+	ar r $@ $^
+
+# TODO: complete the following rules
+
+$(FLOAT_O):
+
+$(FLOAT_VFPRINTF_O):
+

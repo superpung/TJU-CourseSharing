@@ -1,0 +1,13 @@
+kernel_CFLAGS_EXTRA := -m32 -O2 -fno-builtin -fno-omit-frame-pointer -fno-stack-protector \
+						-I$(LIB_COMMON_DIR) -I$(LIBC_INC_DIR)
+$(eval $(call make_common_rules,kernel,$(kernel_CFLAGS_EXTRA)))
+
+kernel_START_OBJ := $(kernel_OBJ_DIR)/start.o
+kernel_MM_MALLOC_OBJ := $(kernel_SRC_DIR)/memory/mm_malloc.o
+
+kernel_LDFLAGS := -m elf_i386 -e start -Ttext=0x00100000 
+
+$(kernel_BIN): $(kernel_START_OBJ) $(kernel_MM_MALLOC_OBJ) \
+	$(filter-out $(kernel_START_OBJ), $(kernel_OBJS)) $(LIBC)
+	$(call make_command, $(LD), $(kernel_LDFLAGS), ld $@, $^)
+	$(call git_commit, "compile kernel")
