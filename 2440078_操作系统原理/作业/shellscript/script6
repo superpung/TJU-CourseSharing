@@ -1,0 +1,22 @@
+if test -z "$MAXFILE"
+then
+	max=10
+else
+	max=$MAXFILE
+fi
+
+if test $# -gt $max
+then
+	echo "Remove $# files (y/n)?  "
+	read answer
+	if test "$answer"!="y"
+	then
+		echo "files not removed"
+		exit 0
+	fi
+fi
+
+for i
+do
+	rm -f $i
+done

@@ -1,0 +1,14 @@
+if test $# -eq 0
+then
+	dir=`pwd`
+else
+	dir=$1
+fi
+cd $dir
+for i in *
+do
+	if test -f $i
+	then 
+		ls -l $i | cut -c-10,57-
+	fi
+done

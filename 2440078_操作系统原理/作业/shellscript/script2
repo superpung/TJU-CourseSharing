@@ -1,0 +1,6 @@
+if test "$1" = "y" -o "$1" = "yes" -o "$1" = "Yes" -o "$1" = "YES" -o "$1" = "Y"  
+then
+	exit 0;
+else
+	exit 1;
+fi

@@ -1,0 +1,24 @@
+function myls()
+{
+	for file in $1/* 
+	do
+		if [ -d "$file" ]; then
+			echo
+			echo "$file:"
+			myls $file
+		else
+			echo $file
+		fi
+	done
+
+}
+
+if [ -d "$1" ]; then
+	myls $1	
+else
+	myls .
+fi
+
+
+
+

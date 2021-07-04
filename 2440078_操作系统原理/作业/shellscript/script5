@@ -1,0 +1,16 @@
+if test ! $# -eq 1
+then 
+	echo "Usage: $0 filename"
+	exit 1
+fi
+
+if test -d $1
+then
+	ls -l $1
+elif test -x $1
+then
+	$1
+elif test -r $1
+then
+	cat $1
+fi
