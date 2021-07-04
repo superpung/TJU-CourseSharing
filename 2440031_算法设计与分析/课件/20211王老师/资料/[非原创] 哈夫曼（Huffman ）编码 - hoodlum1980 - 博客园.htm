@@ -1,0 +1,1149 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html -->
+<HTML><HEAD><TITLE>[非原创] 哈夫曼（Huffman ）编码 - hoodlum1980 - 博客园</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=description 
+content="Hufmann coding 是最古老，以及最优雅的数据压缩方法之一。它是以最小冗余编码为基础的，即如果我们知道数据中的不同符号在数据中的出现频率，我们就可以对它用一种占用空间最少的编码方式进行编码，这种方法是，对于最频繁出现的符号制定最短长度的编码，而对于较少出现的符号给较长长度的编码。哈夫曼编码"><LINK 
+rel=stylesheet type=text/css 
+href="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/common.css"><LINK 
+id=MainCss rel=stylesheet type=text/css 
+href="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/style.css"><LINK 
+rel=stylesheet type=text/css 
+href="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/common2.css"><LINK 
+rel=stylesheet type=text/css 
+href="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/shStyle.css"><LINK 
+title=RSS rel=alternate type=application/rss+xml 
+href="http://www.cnblogs.com/hoodlum1980/rss"><LINK title=RSD rel=EditURI 
+type=application/rsd+xml href="http://www.cnblogs.com/hoodlum1980/rsd.xml"><LINK 
+rel=wlwmanifest type=application/wlwmanifest+xml 
+href="http://www.cnblogs.com/hoodlum1980/wlwmanifest.xml">
+<SCRIPT type=text/javascript 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/jquery.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/common.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/json2.js"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/syntaxHighlighter.js"></SCRIPT>
+
+<META name=GENERATOR content="MSHTML 9.00.8112.16441"></HEAD>
+<BODY><A name=top></A>
+<FORM id=Form1 method=post action=1665112.html>
+<DIV class=aspNetHidden><INPUT id=__VIEWSTATE name=__VIEWSTATE type=hidden> 
+</DIV>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+var currentBlogApp='hoodlum1980';
+//]]>
+</SCRIPT>
+
+<DIV id=top>
+<DIV>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD class=HeaderTitles>
+      <H1 class=HeaderTitle><A id=Header1_HeaderTitle class=HeaderMainTitle 
+      href="http://www.cnblogs.com/hoodlum1980/">hoodlum1980 [ 发发 ] 
+      的技术博客</A></H1>
+      <P id=tagline>-- C, C++, C#, 图像处理, Windows Mobile; (I LOVE 
+  ZJU)</P></TD></TR></TBODY></TABLE></DIV>
+<DIV class=HeaderBar>
+<TABLE id=HeaderBar class=HeaderBar>
+  <TBODY>
+  <TR>
+    <TD class=HeaderBarTab noWrap><IMG id=Header1_StartButton align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/BlueTabRight.gif"> 
+      <A id=Header1_MyLinks1_HomeLink href="http://www.cnblogs.com/">博客园</A><IMG 
+      id=Header1_MyLinks1_Divider1 align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/divider.gif"> 
+      <A id=Header1_MyLinks1_MyHomeLink 
+      href="http://www.cnblogs.com/hoodlum1980/">首页</A><IMG 
+      id=Header1_MyLinks1_Image1 align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/divider.gif"> 
+      <A id=Header1_MyLinks1_NewPostLink 
+      href="http://www.cnblogs.com/hoodlum1980/admin/EditPosts.aspx?opt=1" 
+      rel=nofollow>新随笔</A><IMG id=Header1_MyLinks1_Image2 align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/divider.gif"> 
+      <A accessKey=9 id=Header1_MyLinks1_ContactLink 
+      href="http://space.cnblogs.com/msg/send/hoodlum1980" 
+      rel=nofollow>联系</A><IMG id=Header1_MyLinks1_Divider2 align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/divider.gif"> 
+      <A id=Header1_MyLinks1_Syndication 
+      href="http://www.cnblogs.com/hoodlum1980/rss" target=_blank>订阅</A><IMG 
+      id=Header1_MyLinks1_Divider3 align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/divider.gif"> 
+<!--<a id="Header1_MyLinks1_Syndication2" href="../../../../../Atom.aspx" target="_blank">Syndicate this Site (Atom)</a><img id="Header1_MyLinks1_Divider6" src="../../../../../Skins/WinXPBlue/Images/divider.gif" align="absmiddle" />
+<a id="Header1_MyLinks1_XMLLink" class="XMLLink" href="http://www.cnblogs.com/hoodlum1980/rss" target="_blank"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--><A 
+      id=Header1_MyLinks1_Admin 
+      href="http://www.cnblogs.com/hoodlum1980/admin/EditPosts.aspx" 
+      rel=nofollow>管理</A><IMG id=Header1_MyLinks1_Divider5 align=absMiddle 
+      src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/divider.gif"> 
+    </TD>
+    <TD class=HeaderBarTabBack width="100%" noWrap>
+      <DIV class=BlogStatsBar>
+      <TABLE class=BlogStatsBar>
+        <TBODY>
+        <TR>
+          <TD width="100%"></TD>
+          <TD class=BlogStatsBar noWrap>&nbsp; 119 Posts&nbsp;:: 2 Stories :: 
+            230 Comments :: 1 Trackbacks 
+</TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></DIV></DIV>
+<DIV style="DISPLAY: none" id=leftmenu>
+<H3>公告</H3>
+<DIV class=News>
+<P><IMG 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/o_MAIL16.png"><IMG 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/o_MyEmail.png"></P>
+<P><IMG 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/o_weiboicon16.png"><A 
+href="http://t.qq.com/jinfd1980" target=_blank>腾讯微博</A></P>
+<HR>
+
+<P>● 如果不严谨不求是不考证，主观妄断，就没有任何说服力; 如果不谦逊，骄傲自大，洋洋自得，就成了井底之蛙。</P>
+<P>● 于2011-12-20发现的一颗心:</P>
+<P><SPAN style="COLOR: #0080ff"><STRONG>x^2 - |x| y + y^2 = 
+1;</STRONG></SPAN></P>
+<HR>
+
+<DIV id=profile_block>昵称：<A 
+href="http://home.cnblogs.com/u/hoodlum1980/">hoodlum1980</A><BR>园龄：<A 
+title=入园时间：2007-04-11 
+href="http://home.cnblogs.com/u/hoodlum1980/">5年</A><BR>粉丝：<A 
+href="http://home.cnblogs.com/u/hoodlum1980/followers/">64</A><BR>关注：<A 
+href="http://home.cnblogs.com/u/hoodlum1980/followees/">12</A>
+<DIV id=p_b_follow></DIV>
+<SCRIPT type=text/javascript>cnblogs.UserManager.GetFollowStatus('d0703d0b-63cf-dd11-9e4d-001cf0cd104b')</SCRIPT>
+</DIV></DIV>
+<SCRIPT type=text/javascript>
+    var blogapp = 'hoodlum1980';
+</SCRIPT>
+
+<DIV class=mySearch>
+<H3 class=catListTitle>搜索</H3>
+<DIV id=widget_my_zzk class=div_my_zzk><INPUT 
+onkeydown="return zzk_go_enter(event);" id=q class=input_my_zzk>&nbsp;<INPUT id=btnZzk class=btn_my_zzk onclick=zzk_go() value=找找看 type=button></DIV>
+<DIV id=SingleColumn1_ctl00_widget_my_google class=div_my_zzk><INPUT 
+onkeydown="return google_go_enter(event)" id=google_q class=input_my_zzk 
+name=google_q>&nbsp;<INPUT class=btn_my_zzk onclick=google_go() value=谷歌搜索 type=button></DIV></DIV>
+<H3 class=catListTitle>最新随笔</H3>
+<DIV id=RecentPosts class=RecentComment>
+<UL style="WORD-BREAK: break-all">
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2012/02/16/2353493.html">1. 
+  [发布] 电量监视+自动关机工具</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/12/20/2294124.html">2. 
+  ZOL1096 （Subway）和 ZOL1086（Octal Fractions）</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/11/23/2260932.html">3. 
+  有关进程空间，全局变量，静态变量</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/11/18/2254606.html">4. 
+  ZOL 简单题集合（三）</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/11/18/2254524.html">5. 
+  [发布] QQGame 连连看辅助工具（限制功能版）</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/11/10/2243839.html">6. 
+  ZOL3505 ( Yet Another Set of Numbers ) 解题报告</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/11/09/2241914.html">7. 
+  ZOL 简单题集合（二）</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/11/04/2236627.html">8. 
+  ZOL1010（Area）解题报告</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/07/10/2102106.html">9. 
+  修改 EXE 文件的图标</A>
+  <LI><A 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2011/06/24/2089267.html">10. 
+  [发布] 多选控件和时钟控件</A> </LI></UL></DIV>
+<H3>相册</H3>
+<UL>
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_0_Link_0 
+  href="http://www.cnblogs.com/hoodlum1980/gallery/99077.html" 
+  rel=nofollow>百十载求是魂ZJU</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_0_Link_1 
+  href="http://www.cnblogs.com/hoodlum1980/gallery/102618.html" 
+  rel=nofollow>程序截图</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_0_Link_2 
+  href="http://www.cnblogs.com/hoodlum1980/gallery/102621.html" 
+  rel=nofollow>我的PS作品</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_0_Link_3 
+  href="http://www.cnblogs.com/hoodlum1980/gallery/153100.html" 
+  rel=nofollow>我的鼠标涂鸦</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_0_Link_4 
+  href="http://www.cnblogs.com/hoodlum1980/gallery/155252.html" 
+  rel=nofollow>我的相册</A> </LI></UL>
+<H3>个人专栏</H3>
+<UL>
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_Link_0 
+  href="http://www.cppblog.com/besterChen" rel=nofollow 
+  target=_blank>besterChen</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_RssLink_1 
+  onclick="return open_link('http://www.cnblogs.com/devymex/rss');" 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#"><IMG 
+  border=0 align=center 
+  src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/xml.gif"></A> 
+  <A id=SingleColumn1_Categories_CatList_LinkList_1_Link_1 
+  href="http://www.cnblogs.com/devymex/" rel=nofollow target=_blank>devymex</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_RssLink_2 
+  onclick="return open_link('http://feeds.feedsky.com/csdn.net/housisong');" 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#"><IMG 
+  border=0 align=center 
+  src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/xml.gif"></A> 
+  <A id=SingleColumn1_Categories_CatList_LinkList_1_Link_2 
+  href="http://blog.csdn.net/housisong" rel=nofollow 
+  target=_blank>HouSisong的专栏</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_RssLink_3 
+  onclick="return open_link('http://feed.feedsky.com/matrix67');" 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#"><IMG 
+  border=0 align=center 
+  src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/xml.gif"></A> 
+  <A id=SingleColumn1_Categories_CatList_LinkList_1_Link_3 
+  href="http://www.matrix67.com/blog/" rel=nofollow target=_blank>Matrix67</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_Link_4 
+  href="http://blogs.msdn.com/b/mgrier" rel=nofollow target=_blank>MGrier</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_RssLink_5 
+  onclick="return open_link('http://feed.cnblogs.com/blog/u/66551/rss');" 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#"><IMG 
+  border=0 align=center 
+  src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/xml.gif"></A> 
+  <A id=SingleColumn1_Categories_CatList_LinkList_1_Link_5 
+  href="http://www.cnblogs.com/miloyip" rel=nofollow target=_blank>Milo Yip</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_Link_6 
+  href="http://blogs.msdn.com/b/oldnewthing" rel=nofollow target=_blank>The Old 
+  New Thing</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_Link_7 
+  href="http://blog.titilima.com/" rel=nofollow target=_blank>李马(C++)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_RssLink_8 
+  onclick="return open_link('http://mindhacks.cn/feed/');" 
+  href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#"><IMG 
+  border=0 align=center 
+  src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/xml.gif"></A> 
+  <A id=SingleColumn1_Categories_CatList_LinkList_1_Link_8 
+  href="http://mindhacks.cn/" rel=nofollow target=_blank>刘未鹏 | Mind Hacks</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_1_Link_9 
+  href="http://blog.csdn.net/pongba" rel=nofollow target=_blank>刘未鹏|C++的罗浮宫</A> 
+  </LI></UL>
+<H3>技术论坛</H3>
+<UL>
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_2_Link_0 
+  href="http://bbs.bccn.net/space-uid-232184.html" rel=nofollow 
+  target=_blank>BCCN (my page)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_2_Link_1 
+  href="http://www.codeguru.com/" rel=nofollow target=_blank>Codeguru</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_2_Link_2 
+  href="http://www.codeproject.com/" rel=nofollow target=_blank>Codeproject</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_2_Link_3 
+  href="http://blog.csdn.net/hoodlum1980" rel=nofollow target=_blank>CSDN (my 
+  page)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_2_Link_4 
+  href="http://www.vckbase.com/" rel=nofollow target=_blank>VCKBASE</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_2_Link_5 
+  href="http://www.pediy.com/" rel=nofollow target=_blank>看雪学院</A> </LI></UL>
+<H3>我的好友</H3>
+<UL>
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_3_Link_0 
+  href="http://www.hi.baidu.com/flypiglet_hui" rel=nofollow 
+  target=_blank>flypiglet</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_3_Link_1 
+  href="http://blog.sina.com.cn/u/1233780550" rel=nofollow 
+  target=_blank>flysheep (豆豆)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_3_Link_2 
+  href="http://snowdowning1230.blog.163.com/" rel=nofollow 
+  target=_blank>snowdowning (雪)</A> </LI></UL>
+<H3>我的收藏</H3>
+<UL>
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_4_Link_0 
+  href="http://www.google.cn/reader/" rel=nofollow target=_blank>Google 
+  Reader</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_4_Link_1 
+  href="http://acm.zju.edu.cn/" rel=nofollow target=_blank>ZOJ (ACM.ZJU)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_4_Link_2 
+  href="http://www.zju.edu.cn/" rel=nofollow target=_blank>老和山职业技术学院</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_4_Link_3 
+  href="http://www.qsc.zju.edu.cn/" rel=nofollow target=_blank>求是潮</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_4_Link_4 
+  href="http://cdc.tencent.com/" rel=nofollow target=_blank>腾讯CDC</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_4_Link_5 
+  href="http://ocw.zju.edu.cn/cn/default.jsp" rel=nofollow 
+  target=_blank>浙江大学开放课程</A> </LI></UL>
+<H3>浙大校友</H3>
+<UL>
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_0 
+  href="http://diaoyifu.sinaapp.com/" rel=nofollow target=_blank>alexdiao</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_1 
+  href="http://blog.sina.com.cn/almin9910" rel=nofollow target=_blank>almin</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_2 
+  href="http://blog.stariy.org/" rel=nofollow target=_blank>Flyぁ梦</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_3 
+  href="http://hi.baidu.com/jay23jack" rel=nofollow target=_blank>jay23jack</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_4 
+  href="http://libitum.tk/" rel=nofollow target=_blank>libitum</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_5 
+  href="http://blog.csdn.net/nineforever" rel=nofollow 
+  target=_blank>vbvan(@CSDN)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_6 
+  href="http://blogs.msdn.com/xiangfan" rel=nofollow 
+  target=_blank>vbvan(@MSDN)</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_7 
+  href="http://wyest.blogbus.com/" rel=nofollow target=_blank>wyest</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_8 
+  href="http://blog.shidelai.cn/" rel=nofollow target=_blank>阿德日志</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_9 
+  href="http://blog.lifetoy.org/" rel=nofollow target=_blank>寒水远山</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_10 
+  href="http://blog.sina.com.cn/icysmiling" rel=nofollow target=_blank>小鹿</A> 
+  <LI><A id=SingleColumn1_Categories_CatList_LinkList_5_Link_11 
+  href="http://www.kunzhou.net/" rel=nofollow target=_blank>周昆</A> </LI></UL>
+<H3>积分与排名</H3>
+<UL>
+  <LI>积分 - 135694 
+  <LI>排名 - 728 </LI></UL>
+<H3 class=catListTitle>最新评论</H3>
+<DIV id=RecentComments class=RecentComment>
+<DIV id=RecentCommentsBlock></DIV></DIV>
+<H3 class=catListTitle>阅读排行榜</H3>
+<DIV id=TopViewPosts class=RecentComment>
+<DIV id=TopViewPostsBlock></DIV></DIV>
+<H3 class=catListTitle>评论排行榜</H3>
+<DIV id=TopCommentsPosts class=RecentComment>
+<DIV id=TopFeedbackPostsBlock></DIV></DIV>
+<H3 class=catListTitle>推荐排行榜</H3>
+<DIV class=RecentComment>
+<DIV id=TopDiggPostsBlock></DIV></DIV><!--
+	<br><br>
+	<p align="center">
+	<a href="http://www.WebHost4Life.com/default.asp?refid=MarkHWagner">
+	<img src="http://www.WebHost4Life.com/images/banner3.gif" width="120"
+	height="60" border="0" alt="Join WebHost4Life.com"></a>
+	</p>
+--></DIV>
+<DIV id=main>
+<DIV class=post>
+<DIV class=postTitle><A id=cb_post_title_url 
+href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html">[非原创] 
+哈夫曼（Huffman ）编码</A> </DIV>
+<DIV class=postText>
+<DIV id=cnblogs_post_body>&nbsp; 
+<P>　　====================================================</P>
+<P>　　前言：</P>
+<P>　　本文是源于我在（上海交大）饮水思源BBS 的VC版解答其他网友提出的帮助请求。这是德国 DARMSTADT 
+工业大学C++作业题目之一，属于非计算机系的题目，题目本身要求完成的那几个辅助函数难度并不高。我在BBS上给出了这道题目的解答，但是同时我也想根据这个题目的说明文档，来仔细回顾一下 
+Huffman 
+编码。因此本文是以该题目的说明文档为基本框架的。我将对该文档中的主要部分转用中文叙述，当然里面可能还增加有我个人的理解。同时该文档将一并作为附件提供。<BR></P>
+<P>　　该文档是：</P>
+<P>　　PD Dr. Ulf Lorenz, 《Introduction to Mathematical Software Examination Sheet 
+(winter term 2009/2010) 》， Department of Mathematics, TECHNISCHE UNIVERSITY 
+DARMSTADT.<BR></P>
+<P>&nbsp;　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　--hoodlum1980</P>
+<P>　　 =====================================================</P>
+<P>&nbsp;　　Hufmann coding 
+是最古老，以及最优雅的数据压缩方法之一。它是以最小冗余编码为基础的，即如果我们知道数据中的不同符号在数据中的出现频率，我们就可以对它用一种占用空间最少的编码方式进行编码，这种方法是，对于最频繁出现的符号制定最短长度的编码，而对于较少出现的符号给较长长度的编码。哈夫曼编码可以对各种类型的数据进行压缩，但在本文中我们仅仅针对字符进行编码。<BR></P>
+<P>&nbsp;</P>
+<P>　　1. 压缩数据。</P>
+<P>　　压缩数据由以下步骤组成：</P>
+<P>　　a）检查字符在数据中的出现频率。</P>
+<P>　　b）构建哈夫曼树。<BR></P>
+<P>　　c）创建哈夫曼编码表。</P>
+<P>　　d）生成压缩后结果，由一个文件头和压缩后的数据组成。 <BR></P>
+<P>&nbsp;</P>
+<P>&nbsp;　　下面介绍这些步骤的一些细节。</P>
+<P>&nbsp;</P>
+<P>　　a）字符出现的频率：</P>
+<P>　　我们对要压缩的文本进行扫描，然后记录下各个字符出现的次数（在这里我们的输入文本将仅仅有 ascii 字符构成） 
+，扫描完成后我们就得到了一个字符的频率表。这个频率表也是后面的文件头的重要组成部分。为了降低文件头的尺寸，我们对字符频率压缩到用一个字节来表示。【注意】，等比例缩小字符频率时，不能把在文本中出现的字符的频率缩小成0！<BR></P>
+<P>&nbsp;</P>
+<P>　　由以下方法来完成：我们首先提供一个用于填充频率结果的数组（unsigned int 
+freqs[NUM_CHARS]，注意尽管这个数组是UINT类型，但是填充数据必须在0~255之间），元素在这个数组中的索引就代表了该字符的 ascii 
+码。例如填充完毕后，字符‘a’的出现频率即为 freqs['a'];<BR></P>
+<P>　　unsigned char* string: 输入的文本。</P>
+<P>　　unsigned int size：输入文本的字符数。 <BR></P>
+<P>　　</P>
+<DIV class=cnblogs_code 
+onclick="cnblogs_code_show('fe885a0c-564c-4b8a-8b8f-4f471fe141de')"><IMG 
+id=code_img_closed_fe885a0c-564c-4b8a-8b8f-4f471fe141de class=code_img_closed 
+alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ContractedBlock.gif"><IMG 
+style="DISPLAY: none" id=code_img_opened_fe885a0c-564c-4b8a-8b8f-4f471fe141de 
+class=code_img_opened 
+onclick="cnblogs_code_hide('fe885a0c-564c-4b8a-8b8f-4f471fe141de',event)" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class=cnblogs_code_collapse>code_create_freq_array</SPAN> 
+<DIV id=cnblogs_code_open_fe885a0c-564c-4b8a-8b8f-4f471fe141de 
+class=cnblogs_code_hide>
+<DIV><!--{cps..0}--><SPAN style="COLOR: rgb(0,128,0)">//</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">给定一个字符串，把字符的出现频率保存到freqs数组中<BR></SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">//</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">Hint:&nbsp;Be&nbsp;carefull&nbsp;that&nbsp;you&nbsp;don’t&nbsp;scale&nbsp;any&nbsp;frequencies&nbsp;to&nbsp;zero&nbsp;for&nbsp;symbols&nbsp;that&nbsp;do&nbsp;appear&nbsp;in&nbsp;the&nbsp;string!</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)"><BR></SPAN><SPAN 
+style="COLOR: rgb(0,0,0)"><BR></SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">void</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;create_freq_array(unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">int</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;freqs[NUM_CHARS],&nbsp;unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">char</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">*</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">string</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">,&nbsp;unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">int</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;size)<BR>{<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">int</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;i,&nbsp;maxfreq&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">=</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">//</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">初始化成0</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)"><BR></SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;memset(freqs,&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">,&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">sizeof</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">int</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">)&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">*</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;NUM_CHARS);<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">for</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(i</SPAN><SPAN style="COLOR: rgb(0,0,0)">=</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">;&nbsp;i</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&lt;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">size;&nbsp;i</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">++</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;freqs[</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">string</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">[i]]</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">++</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">if</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(freqs[</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">string</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">[i]]&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&gt;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;maxfreq)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maxfreq&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">=</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;freqs[</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">string</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">[i]];<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">//</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">把字符频率压缩到一个字节。&nbsp;scaled&nbsp;freqs&nbsp;to&nbsp;(0~255)</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)"><BR></SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">if</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(maxfreq&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&gt;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0xff</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">for</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(i</SPAN><SPAN style="COLOR: rgb(0,0,0)">=</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">;&nbsp;i</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&lt;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">NUM_CHARS;&nbsp;i</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">++</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">if</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(freqs[i])<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;freqs[i]&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">=</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;(</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">int</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">)(freqs[i]&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">*</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">255.0</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">/</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;maxfreq&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">+</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0.5</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">//</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)">要确保不会被缩小成0！</SPAN><SPAN 
+style="COLOR: rgb(0,128,0)"><BR></SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,255)">if</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">(freqs[i]&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">==</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">0</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;freqs[i]&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">=</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">&nbsp;</SPAN><SPAN 
+style="COLOR: rgb(128,0,128)">1</SPAN><SPAN 
+style="COLOR: rgb(0,0,0)">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>}</SPAN></DIV></DIV></DIV>
+<P><BR></P>
+<P>&nbsp;</P>
+<P>　　b）构建哈夫曼树（huffman Tree）；</P>
+<P>　　哈夫曼编码的核心部分就在于构建哈夫曼树，它是一个二叉树。同时它的贪心策略也现在构建哈夫曼树的方法中。 <BR></P>
+<P>　　哈夫曼树用下面的方式构建：首先，我们把所有出现的字符作为一个单节点数，在节点上标识一个数字代表字符出现频率。 <BR></P>
+<P>　　例如如果我们要对字符串“aabbbccccdddddd" 进行编码，则字符频率表如下所示：</P>
+<P>　　 ----------------------------</P>
+<P>　　| &nbsp; &nbsp;&nbsp; a &nbsp; &nbsp; &nbsp; b &nbsp; &nbsp; &nbsp; c 
+&nbsp; &nbsp; &nbsp; d &nbsp;&nbsp; |</P>
+<P>&nbsp;　　----------------------------</P>
+<P>　　| &nbsp; &nbsp;&nbsp; 2&nbsp; &nbsp; &nbsp;&nbsp; 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6&nbsp;&nbsp;&nbsp; |<BR></P>
+<P>&nbsp; &nbsp; &nbsp; ----------------------------</P>
+<P>&nbsp;</P>
+<P>　　一共有4个字符出现，因此最初我们有 4 
+个单节点的树。然后就是体现贪心策略之处，每次我们选取具有最低频率的两个树，并将他们合并，把两个树的频率相加，赋给新树的根节点。重复这个步骤，直到最后只剩下一棵树，就是最终我们需要的哈夫曼树。合并过程如下图所示：<BR>　　</P>
+<P>　　　　<IMG border=0 alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/huffman_01.jpg" 
+width=370 height=526>&nbsp;</P>
+<P>　　最终的编码方式是，每个 
+叶子节点代表了一个在原文中出现的字符。每个字符的编码就是从根节点到该叶子节点的路径。由于字节中的每一位由0，1两种状态，这也正是二叉树尤其重要和常用的原因。从根节点出发，如果进入左子树，则在编码上填0，如果进入右子树，则在编码上填1，直到到达叶子节点，就完成了该字符的编码。从上面的哈夫曼树可见，最终的哈夫曼编码表如下：</P>
+<P>　　=======================</P>
+<P>　　&nbsp; 字符&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 频率&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+编码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 码长</P>
+<P>　　------------------------------------</P>
+<P>　　　a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+110&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+111&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1</P>
+<P>　　========================&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　哈夫曼编码是一种前缀码，即任一个字符的编码都不是其他字符编码的前缀。从我们的编码过程中可以很容易看到这一点，因为所有字符都是哈夫曼树中的叶子节点，所以每个字符所在的叶子节点的路径都不会有重叠部分（即代表字符的节点之间不存在以下关系：某节点是另一节点的祖先或后代）。这个特征能够保证解码的唯一性，不会产生歧义（在解码时只需要找到叶子节点即可完成当前字符的解码）。</P>
+<P>　　</P>
+<P>　　可以看出，出现频率最高的字符，使用最短的编码，字符出现频率越低，编码逐渐增长。这样不同字符在文档中出现的频率差异越大，则压缩效果将会越好。字符的出现频率差异影响了它们最终在哈夫曼树中的深度。</P>
+<P>&nbsp;</P>
+<P>　　因此字符出现频率越大，我们希望给它的编码越短（在哈夫曼树中的深度越浅），即我们希望更晚的将它所在的树进行合并。反之，字符频率越低，我们希望给他的编码最长（在哈夫曼树中的深度越深），因此我们希望越早的将它所在的树进行合并。因此，哈夫曼编码的贪心策略就体现在合并树的过程中，我们每一次总是选择根节点频率最小的两个树先合并，这样就能达到我们所希望的编码结果。</P>
+<P>&nbsp;</P>
+<P>　　在合并树的过程中，为了抽取最小频率的树，我们需要一种重要的数据结构作为辅助：优先级队列（Priority 
+Queue）（最小堆）。什么是优先级队列？优先级队列是指一种维护一组元素的数据结构，它的常用操作是从这些元素中抽取最小的元素，和插入新元素。即他维护了一个动态的元素集合，同时要求插入和抽取尽可能的快。实现优先级队列使用的是数据结构中的堆（Heap）（注意：和内存管理中的堆的概念区别）。</P>
+<P>&nbsp;</P>
+<P>　　最小堆是一个数据结构，在存储方式上使用的是一维线性表（一维数组）存储元素，这些元素在逻辑上组成一个二叉树。</P>
+<P>　　最小堆要求满足以下特征：</P>
+<P>　　对任何节点：左（右）子节点 &gt;=&nbsp;本节点。(显然，集合中的最小元素是二叉树的根节点。)</P>
+<P>　　（请注意上述特征和二叉查找树相区别，二叉查找树的特征是：左子节点 &lt;= 本节点 &lt;= 右子结点，其中序遍历输出就是排序结果。）</P>
+<P>&nbsp;</P>
+<P>　　最小堆的数组是以 1 为起始索引的，注意，而不是 C / C++ 中习惯使用的 0-based 数组，因此在 
+C/C++中，第一个元素（索引为0）通常被浪费。其目的完全是为了能够用下面的简便方式在树节点中导航。</P>
+<P>&nbsp;</P>
+<P>　　对最小堆中的某个节点 x[i] ：</P>
+<P>&nbsp;</P>
+<P>　　根节点：&nbsp;&nbsp; x [ 1 ] ; 　</P>
+<P>　　父节点：&nbsp;&nbsp; x [ i / 2 ] ;</P>
+<P>　　左子节点：x [ i * 2 ] ;&nbsp; &nbsp;</P>
+<P>　　右子节点:&nbsp;&nbsp;x [ i * 2 + 1 ] ;</P>
+<P>&nbsp;</P>
+<P>　　一个最小堆的逻辑二叉树如下图所示：</P>
+<P>　　</P>
+<P>　　<IMG border=0 alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/huffman_02.jpg" 
+width=419 height=163>　　</P>
+<P>&nbsp;</P>
+<P>　　因此最小堆的最小元素就是根节点。由于最小堆需要经常性的做抽取最小元素和插入操作，因此实际上为了维持堆的特征，每次插入和抽取都要进行节点的调整，因此抽取和插入操作都耗时O（log 
+n）。</P>
+<P>&nbsp;</P>
+<P>　　对于优先级队列来说，主要需要实现两种基本操作：插入新元素，抽取最小元素。他们的步骤如下：</P>
+<P>　　（1）插入新元素：把该元素放在二叉树的末端，然后从该新元素开始，向根节点方向进行交换，直到它到达最终位置。</P>
+<P>　　（2）抽取最小元素：把根节点取走。然后把二叉树的末端节点放到根节点上，然而把该节点向子结点反复交换，直到它到达最终位置。</P>
+<P>&nbsp;</P>
+<P>　　实现优先级队列的类代码如下所示：　　</P>
+<P>&nbsp;</P>
+<DIV class=cnblogs_code 
+onclick="cnblogs_code_show('2351b92f-eea4-4717-ae76-7003f80b17dc')"><IMG 
+id=code_img_closed_2351b92f-eea4-4717-ae76-7003f80b17dc class=code_img_closed 
+alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ContractedBlock.gif"><IMG 
+style="DISPLAY: none" id=code_img_opened_2351b92f-eea4-4717-ae76-7003f80b17dc 
+class=code_img_opened 
+onclick="cnblogs_code_hide('2351b92f-eea4-4717-ae76-7003f80b17dc',event)" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class=cnblogs_code_collapse>code_PriorityQueue</SPAN> 
+<DIV id=cnblogs_code_open_2351b92f-eea4-4717-ae76-7003f80b17dc 
+class=cnblogs_code_hide>
+<DIV><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;This&nbsp;class&nbsp;is&nbsp;used&nbsp;in&nbsp;the&nbsp;construction&nbsp;of&nbsp;the&nbsp;Huffman&nbsp;tree.<BR></SPAN><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;优先级队列</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN style="COLOR: #000000"><BR></SPAN><SPAN 
+style="COLOR: #0000ff">class</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNodePriorityQueue<BR>{<BR></SPAN><SPAN 
+style="COLOR: #0000ff">public</SPAN><SPAN 
+style="COLOR: #000000">:<BR>&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNodes[NUM_CHARS];<BR>&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size;<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">void</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;init()&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">void</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;heapify(</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;i)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;l,r,smallest;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;tmp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #800080">2</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN style="COLOR: #000000">i;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">/*</SPAN><SPAN 
+style="COLOR: #008000">left&nbsp;child</SPAN><SPAN 
+style="COLOR: #008000">*/</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #800080">2</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN style="COLOR: #000000">i</SPAN><SPAN 
+style="COLOR: #000000">+</SPAN><SPAN style="COLOR: #800080">1</SPAN><SPAN 
+style="COLOR: #000000">;&nbsp;</SPAN><SPAN style="COLOR: #008000">/*</SPAN><SPAN 
+style="COLOR: #008000">right&nbsp;child</SPAN><SPAN 
+style="COLOR: #008000">*/</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;((l&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&lt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size)</SPAN><SPAN 
+style="COLOR: #000000">&amp;&amp;</SPAN><SPAN 
+style="COLOR: #000000">(HuffNodes[l]</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&lt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNodes[i]</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;smallest</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">l;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">else</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;smallest</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;((r&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&lt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size)</SPAN><SPAN 
+style="COLOR: #000000">&amp;&amp;</SPAN><SPAN 
+style="COLOR: #000000">(HuffNodes[r]</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&lt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNodes[smallest]</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;smallest</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">r;<BR>&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(smallest</SPAN><SPAN 
+style="COLOR: #000000">!=</SPAN><SPAN 
+style="COLOR: #000000">i)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">/*</SPAN><SPAN 
+style="COLOR: #008000">exchange&nbsp;to&nbsp;maintain&nbsp;heap&nbsp;property</SPAN><SPAN 
+style="COLOR: #008000">*/</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tmp</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">HuffNodes[smallest];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNodes[smallest]</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">HuffNodes[i];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNodes[i]</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">tmp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(smallest);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">void</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;addItem(HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;node)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;i,parent;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size</SPAN><SPAN 
+style="COLOR: #000000">+</SPAN><SPAN style="COLOR: #800080">1</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size</SPAN><SPAN 
+style="COLOR: #000000">-</SPAN><SPAN style="COLOR: #800080">1</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;i</SPAN><SPAN 
+style="COLOR: #000000">/</SPAN><SPAN style="COLOR: #800080">2</SPAN><SPAN 
+style="COLOR: #000000">;<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">/*</SPAN><SPAN 
+style="COLOR: #008000">find&nbsp;the&nbsp;correct&nbsp;place&nbsp;to&nbsp;insert</SPAN><SPAN 
+style="COLOR: #008000">*/</SPAN><SPAN 
+style="COLOR: #000000"><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">while</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(&nbsp;(i&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&gt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">)&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&amp;&amp;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(HuffNodes[parent]</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&gt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;node</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq)&nbsp;)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNodes[i]&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNodes[parent];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;parent;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parent&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;i</SPAN><SPAN 
+style="COLOR: #000000">/</SPAN><SPAN style="COLOR: #800080">2</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNodes[i]</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">node;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;extractMin(</SPAN><SPAN 
+style="COLOR: #0000ff">void</SPAN><SPAN 
+style="COLOR: #000000">)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;max;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(isEmpty())<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">return</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">HuffNodes[</SPAN><SPAN 
+style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNodes[</SPAN><SPAN 
+style="COLOR: #800080">0</SPAN><SPAN style="COLOR: #000000">]</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">HuffNodes[size</SPAN><SPAN 
+style="COLOR: #000000">-</SPAN><SPAN style="COLOR: #800080">1</SPAN><SPAN 
+style="COLOR: #000000">];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">size</SPAN><SPAN 
+style="COLOR: #000000">-</SPAN><SPAN style="COLOR: #800080">1</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;heapify(</SPAN><SPAN 
+style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">return</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;max;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;isEmpty(</SPAN><SPAN 
+style="COLOR: #0000ff">void</SPAN><SPAN 
+style="COLOR: #000000">)&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">return</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size</SPAN><SPAN 
+style="COLOR: #000000">==</SPAN><SPAN style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;isFull(</SPAN><SPAN 
+style="COLOR: #0000ff">void</SPAN><SPAN 
+style="COLOR: #000000">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">return</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;size&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&gt;=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;NUM_CHARS;<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR>};</SPAN></DIV></DIV></DIV>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　在上面的代码中，使用的是　heapify 成员函数，将指定的节点交换到最终位置。</P>
+<P>&nbsp;</P>
+<P>　　构建哈夫曼树的步骤如下：</P>
+<P>　　a）把所有出现的字符作为一个节点（单节点树），把这些树组装成一个优先级队列；</P>
+<P>　　b）从该优先级队列中连续抽取两个频率最小的树分别作为左子树，右子树，将他们合并成一棵树（频率=两棵树频率之和），然后把这棵树插回队列中。</P>
+<P>　　c）重复步骤b，每次合并都将使优先级队列的尺寸减小1，直到最后队列中只剩一棵树为止，就是我们需要的哈夫曼树。</P>
+<P>&nbsp;</P>
+<P>　　相关代码如下：</P>
+<P>　　</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<DIV class=cnblogs_code 
+onclick="cnblogs_code_show('da2a41b1-5dff-4851-897f-edc5408c8720')"><IMG 
+id=code_img_closed_da2a41b1-5dff-4851-897f-edc5408c8720 class=code_img_closed 
+alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ContractedBlock.gif"><IMG 
+style="DISPLAY: none" id=code_img_opened_da2a41b1-5dff-4851-897f-edc5408c8720 
+class=code_img_opened 
+onclick="cnblogs_code_hide('da2a41b1-5dff-4851-897f-edc5408c8720',event)" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ExpandedBlockStart.gif"><SPAN 
+class=cnblogs_code_collapse>code_build_Huffman_tree</SPAN> 
+<DIV id=cnblogs_code_open_da2a41b1-5dff-4851-897f-edc5408c8720 
+class=cnblogs_code_hide>
+<DIV><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;create&nbsp;the&nbsp;Huffman&nbsp;tree&nbsp;from&nbsp;the&nbsp;array&nbsp;of&nbsp;frequencies<BR></SPAN><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;root&nbsp;node&nbsp;of&nbsp;the&nbsp;Huffman&nbsp;tree<BR></SPAN><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;根据字符频率数组，创建一个huffman树。返回根节点。</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000"><BR>HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;build_Huffman_tree(unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;freqs[NUM_CHARS])<BR>{<BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;create&nbsp;priority&nbsp;queue</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;HuffNodePriorityQueue&nbsp;priority_queue;<BR>&nbsp;&nbsp;&nbsp;&nbsp;priority_queue.init();<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">for</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(unsigned&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">int</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;i&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">;&nbsp;i&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&lt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;NUM_CHARS;&nbsp;i</SPAN><SPAN 
+style="COLOR: #000000">++</SPAN><SPAN 
+style="COLOR: #000000">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">if</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(freqs[i]&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&gt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #800080">0</SPAN><SPAN 
+style="COLOR: #000000">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;node&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">new</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNode;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">c&nbsp;</SPAN><SPAN style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;i;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;freqs[i];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">left&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;NULL;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">right&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;NULL;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;priority_queue.addItem(node);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;printf(</SPAN><SPAN 
+style="COLOR: #800000">"</SPAN><SPAN 
+style="COLOR: #800000">number&nbsp;of&nbsp;characters:&nbsp;%d\n</SPAN><SPAN 
+style="COLOR: #800000">"</SPAN><SPAN 
+style="COLOR: #000000">,&nbsp;priority_queue.size);<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;create&nbsp;the&nbsp;Huffman&nbsp;tree</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">while</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;(priority_queue.size&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">&gt;</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;</SPAN><SPAN style="COLOR: #800080">1</SPAN><SPAN 
+style="COLOR: #000000">)<BR>&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;left&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;priority_queue.extractMin();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;right&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;priority_queue.extractMin();<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HuffNode</SPAN><SPAN 
+style="COLOR: #000000">*</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;root&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN style="COLOR: #000000">&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">new</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;HuffNode;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;left</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">+</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;right</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">freq;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">left&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;left;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root</SPAN><SPAN 
+style="COLOR: #000000">-&gt;</SPAN><SPAN 
+style="COLOR: #000000">right&nbsp;</SPAN><SPAN 
+style="COLOR: #000000">=</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;right;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;priority_queue.addItem(root);<BR>&nbsp;&nbsp;&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #008000">//</SPAN><SPAN 
+style="COLOR: #008000">&nbsp;return&nbsp;pointer&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;Huffman&nbsp;tree</SPAN><SPAN 
+style="COLOR: #008000"><BR></SPAN><SPAN 
+style="COLOR: #000000">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+style="COLOR: #0000ff">return</SPAN><SPAN 
+style="COLOR: #000000">&nbsp;priority_queue.extractMin();<BR>}</SPAN></DIV></DIV></DIV>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　d) 压缩数据；</P>
+<P>　　我们已经建立了哈夫曼树，并根据哈夫曼树建立了字符的哈夫曼编码表，因此现在压缩数据的方法将是很显而易见的，我们遍历输入的文本，对每个字符，根据编码表依次把当前字符的编码写入到编码结果中去。为了能够解压缩，我们还需要在编码时写入一个文件头，这样我们在解码时能够重建（和编码时同样的）哈夫曼树。最终的文件格式定义如下：</P>
+<P>&nbsp;</P>
+<P>　　File Header（文件头）：</P>
+<P>　　　　unsigned int size; 被编码的文本长度（字符数）；</P>
+<P>　　　　unsigned char freqs[ NUM_CHARS ]; 字符频率表</P>
+<P>&nbsp;</P>
+<P>　　compressed; (Bits: 压缩后的数据）；</P>
+<P>&nbsp;</P>
+<P>　　注意：压缩后的Bits实际上必须以字节为最小单位。因此 Bits 需要向上取整到整数字节。</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　2. 解压缩数据；</P>
+<P>　　解压缩数据的过程是：</P>
+<P>　　e) 读取文件头；</P>
+<P>　　f）根据文件头重建哈夫曼树；（和压缩数据时的步骤一致，代码是复用的）</P>
+<P>　　g）根据哈夫曼树读取并逐个字符解码；</P>
+<P>&nbsp;</P>
+<P>　　e) 读取文件头：</P>
+<P>　　这一部是处于文件头的信息，文件头由输入文本的字节数和（已等比例压缩到一个字节）字符频率表组成。根据这些信息构建出字符频率表，这一步骤和压缩数据时一样。</P>
+<P>　　g) 解码：</P>
+<P>　　我们遍历编码后的Bits，每一次都从哈夫曼树的根节点出发，遇到0时，进入节点的左子树，遇到1时进入节点的右子树，直到到达叶子节点为止，并取得最终的字符。重复这一过程，知道所有字符都已经解码。</P>
+<P>&nbsp;</P>
+<P>　　总结：对上述的编码解码过程如下图所示。其中编码时的输入是明文字符串，输出是压缩后的文件。对于解码来说输入和输出和前者相反。</P>
+<P>　　</P>
+<P>　　<IMG border=0 alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/huffman_03.jpg" 
+width=375 height=361>&nbsp;</P>
+<P>&nbsp;</P>
+<P>　　最后，提供已经补充完整的代码文件和原PDF文档：</P>
+<P>　　<A title=http://files.cnblogs.com/hoodlum1980/Huffman.rar 
+href="http://files.cnblogs.com/hoodlum1980/Huffman.rar" 
+target=_blank>http://files.cnblogs.com/hoodlum1980/Huffman.rar</A></P>
+<P>　　</P>
+<P>　　当我们使用上面的代码对“aabbbccccdddddd”进行哈夫曼编码时，程序产生的输出如下：</P>
+<P>　　<STRONG>size of input: 15<BR></STRONG>　　char: a freq: 2<BR>　　char: b freq: 
+3<BR>　　char: c freq: 4<BR>　　char: d freq: 6</P>
+<P>　　number of characters: 4</P>
+<P>&nbsp;</P>
+<P>　　<STRONG>character encodings:<BR></STRONG>　　char: a code: 110<BR>　　char: b 
+code: 111<BR>　　char: c code: 10<BR>　　char: d code: 0</P>
+<P>&nbsp;</P>
+<P>　　<STRONG>compressed string: (size: 32 bit) //注意后三个Bit 不携带信息，仅为了补齐成 8 Bits 
+整数倍；<BR></STRONG>　　11011011111111110101010000000101</P>
+<P><BR>&nbsp;</P>
+<P>　　size of compressed string: 15<BR>　　number of characters: 4<BR></P>
+<P>　　<STRONG>uncompressed string: (size: 120 bit)</STRONG></P>
+<P>　　aabbbccccdddddd</P>
+<P><BR>&nbsp;</P>
+<P>　　【备注】程序也可以接收一个命令行参数（文本文件的文件名）作为输入，在编码后保存成一个二进制文件，然后再从该二进制文件解码并保存到另一个新的文本文件。<BR></P></DIV>
+<SCRIPT type=text/javascript>
+if ($ != jQuery) {
+	$ = jQuery.noConflict();
+}
+var isLogined = false;
+var cb_blogId = 25773;
+var cb_entryId = 1665112;
+var cb_blogApp = "hoodlum1980";
+var cb_blogUserGuid = "d0703d0b-63cf-dd11-9e4d-001cf0cd104b";
+var cb_entryCreatedDate = '2010/2/6 19:56:00';
+</SCRIPT>
+
+<DIV id=blog_post_info_block>
+<DIV id=BlogPostCategory></DIV>
+<DIV id=EntryTag></DIV>
+<DIV style="DISPLAY: none" id=green_channel>绿色通道：<A id=green_channel_digg 
+onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,'谢谢推荐！');" 
+href="javascript:void(0);">好文要顶</A><A id=green_channel_follow 
+onclick=c_follow(); href="javascript:void(0);">关注我</A><A 
+id=green_channel_favorite onclick="AddToWz(1665112);return false;" 
+href="javascript:void(0);">收藏该文</A><A id=green_channel_contact 
+href="http://space.cnblogs.com/msg/send/hoodlum1980" target=_blank>与我联系</A> <A 
+id=green_channel_weibo title=分享至新浪微博 onclick=ShareToTsina() 
+href="javascript:void(0);"><IMG alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/icon_sina.gif"></A> 
+</DIV>
+<DIV id=digg_block>
+<DIV id=author_profile>
+<DIV id=author_profile_info class=author_profile_info>
+<DIV id=author_profile_detail class=author_profile_info></DIV></DIV>
+<DIV class=clear></DIV>
+<DIV id=author_profile_honor></DIV>
+<DIV id=author_profile_follow></DIV></DIV>
+<DIV style="DISPLAY: none" id=div_digg>
+<DIV class=diggit onclick=DiggIt(cb_entryId,cb_blogId,1)><SPAN id=digg_count 
+class=diggnum></SPAN></DIV>
+<DIV class=buryit onclick=DiggIt(cb_entryId,cb_blogId,2)><SPAN id=bury_count 
+class=burynum></SPAN></DIV>
+<DIV class=clear></DIV>
+<DIV id=digg_tips class=diggword></DIV></DIV></DIV>
+<DIV class=clear></DIV>
+<DIV id=post_next_prev></DIV></DIV>
+<SCRIPT type=text/javascript>
+LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);
+</SCRIPT>
+</DIV>
+<DIV class=postfoot>posted on 2010-02-06 19:56 <A 
+href="http://www.cnblogs.com/hoodlum1980/">hoodlum1980</A> 阅读(3288) <A 
+href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#commentform">评论(0)</A> 
+<A 
+onclick="location.href='http://www.cnblogs.com/hoodlum1980/admin/EditPosts.aspx?postid=1665112'" 
+href="javascript:void(0)" rel=nofollow>编辑</A> <A 
+onclick="AddToWz(1665112);return false;" 
+href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#">收藏</A> 
+</DIV></DIV><IMG alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/1665112.jpg" 
+width=1 height=1> 
+<DIV id=comment_form class=commentform>
+<DIV id=divCommentShow></DIV>
+<DIV id=comment_nav><SPAN id=span_refresh_tips></SPAN><A id=lnk_RefreshComments 
+onclick="return RefreshCommentList(cb_entryId);" 
+href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#" 
+name=commentform>刷新评论列表</A><A onclick="return RefreshPage();" 
+href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#">刷新页面</A><A 
+href="http://www.cnblogs.com/hoodlum1980/archive/2010/02/06/1665112.html#top">返回顶部</A></DIV>
+<DIV id=comment_form_container></DIV>
+<SCRIPT type=text/javascript>
+    commentManager.loadCommentForm();
+</SCRIPT>
+
+<DIV class=ad_text_commentbox><A href="http://q.cnblogs.com/" 
+target=_blank>程序员问答社区，解决您的IT难题</A></DIV>
+<DIV id=clear_read_link></DIV>
+<SCRIPT type=text/javascript>
+    $("#clear_read_link").html('<a href="http://archive.cnblogs.com/a/' + cb_entryId + '/" target="_blank">简洁阅读版式</a>')
+</SCRIPT>
+
+<DIV id=site_nav_under><A title=程序员的网上家园 href="http://www.cnblogs.com/" 
+target=_blank>网站首页</A><A title=程序员问答社区 href="http://q.cnblogs.com/" 
+target=_blank>博问</A><A title=IT新闻 href="http://news.cnblogs.com/" 
+target=_blank>新闻</A><A href="http://home.cnblogs.com/ing/" 
+target=_blank>闪存</A><A href="http://job.cnblogs.com/" target=_blank>程序员招聘</A><A 
+href="http://kb.cnblogs.com/" target=_blank>知识库</A> 
+<DIV id=site_editor_opt></DIV>
+<SCRIPT type=text/javascript>
+    if (isLogined) {
+        showEditorOpt();
+    }
+</SCRIPT>
+</DIV>
+<SCRIPT type=text/javascript>
+    var enableGoogleAd = true;
+    if ($("#cnblogs_post_body").text().length < 500) {
+        enableGoogleAd = false;
+    }
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        if (enableGoogleAd) {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            gads.src = 'http://common.cnblogs.com/script/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        }
+    })();
+</SCRIPT>
+
+<SCRIPT type=text/javascript>
+    if (enableGoogleAd) {
+        try {
+            googletag.cmd.push(function () {
+                googletag.defineSlot('/1090369/cnblogs_blogpost_C1', [300, 250], 'div-gpt-ad-1320933818841-0').addService(googletag.pubads());
+                googletag.defineSlot('/1090369/cnblogs_blogpost_C2', [468, 60], 'div-gpt-ad-1320933818841-1').addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        } catch (e) { }
+    }
+</SCRIPT>
+
+<DIV id=google_ad_c1 class=c_ad_block><!-- cnblogs_blogpost_C1 -->
+<DIV style="WIDTH: 300px; HEIGHT: 250px" id=div-gpt-ad-1320933818841-0>
+<SCRIPT type=text/javascript>
+    if (enableGoogleAd) {
+        try {
+            googletag.cmd.push(function () { googletag.display('div-gpt-ad-1320933818841-0'); });
+        } catch (e) { }
+    }
+</SCRIPT>
+</DIV></DIV>
+<DIV class="itnews c_ad_block"><B>最新IT新闻</B>:<BR>· <A 
+href="http://news.cnblogs.com/n/138313/" target=_blank>《财富》评亚洲25位热门商界人士 
+曹国伟入榜</A><BR>· <A href="http://news.cnblogs.com/n/138310/" 
+target=_blank>日本美食图片应用SnapDish将与人人合作</A><BR>· <A 
+href="http://news.cnblogs.com/n/138309/" target=_blank>又一个 NFC 钱包案例：Nokia + 
+PagSeguro</A><BR>· <A href="http://news.cnblogs.com/n/138307/" 
+target=_blank>基因能预测猴子的社会地位？</A><BR>· <A href="http://news.cnblogs.com/n/138305/" 
+target=_blank>东芝将加大Fab5工厂NAND闪存产能</A><BR>» <A title=IT新闻 
+href="http://news.cnblogs.com/" target=_blank>更多新闻...</A> </DIV>
+<DIV id=kb_block class="itnews c_ad_block"><B>最新知识库文章</B>:<BR>
+<DIV id=kb_recent>· <A href="http://kb.cnblogs.com/page/137951/" 
+target=_blank>五个非常重要的移动Web内容适应设计理念</A><BR>· <A 
+href="http://kb.cnblogs.com/page/137867/" target=_blank>函数式编程初探</A><BR>· <A 
+href="http://kb.cnblogs.com/page/135415/" target=_blank>心如止水的程序员</A><BR>· <A 
+href="http://kb.cnblogs.com/page/135736/" target=_blank>解决「问题」，不要解决问题</A><BR>· 
+<A href="http://kb.cnblogs.com/page/137524/" 
+target=_blank>你所知道的学习方法，都是错的！</A><BR></DIV>» <A href="http://kb.cnblogs.com/" 
+target=_blank>更多知识库文章...</A> </DIV>
+<DIV id=google_ad_c2 class=c_ad_block><!-- cnblogs_blogpost_C2 -->
+<DIV style="WIDTH: 468px; HEIGHT: 60px" id=div-gpt-ad-1320933818841-1>
+<SCRIPT type=text/javascript>
+    if (enableGoogleAd) {
+        try {
+            googletag.cmd.push(function () { googletag.display('div-gpt-ad-1320933818841-1'); });
+        } catch (e) { }
+
+    }
+</SCRIPT>
+</DIV></DIV>
+<DIV style="DISPLAY: none" id=ad_under_comment2 class=c_ad_block><A 
+href="http://www.china-pub.com/STATIC07/1107/2011chinapub_6810_110718/2011chinapub_6810_110718.asp" 
+rel=nofollow target=_blank><IMG 
+style="BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px" 
+alt="" 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/china-pub.jpg"></A><BR><A 
+href="http://www.china-pub.com/STATIC07/1107/zh_autumntb_110725/zh_autumntb_110725.asp" 
+rel=nofollow target=_blank>China-pub 2011秋季教材巡展</A><BR><A 
+href="http://www.china-pub.com/static07/0901/zh_jueba_090121.asp" rel=nofollow 
+target=_blank>China-Pub 计算机绝版图书按需印刷服务</A><BR></DIV>
+<SCRIPT type=text/javascript>
+    if (enableGoogleAd) {
+        if (document.getElementById("ad_under_comment2")) {
+            $("#ad_under_comment2").show();
+        }
+    }
+    else {
+        $("#google_ad_c1").hide();
+        $("#google_ad_c2").hide();
+    }
+</SCRIPT>
+
+<DIV id=HistoryToday class=c_ad_block></DIV>
+<SCRIPT type=text/javascript>
+    $(document).ready(function () {
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    });
+</SCRIPT>
+</DIV></DIV>
+<P id=footer>Powered by: <BR><A style="FONT-FAMILY: Verdana; FONT-SIZE: 12px" 
+id=Footer1_Hyperlink3 href="http://www.cnblogs.com/" name=Hyperlink1>博客园</A> 
+<BR>Copyright © hoodlum1980 </P></FORM>
+<SCRIPT type=text/javascript>
+    if (!isSyntaxHighlighted) {
+        try {
+            SyntaxHighlighter.all();
+        } catch (e) { }
+    }
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="[非原创]%20哈夫曼（Huffman%20）编码%20-%20hoodlum1980%20-%20博客园_files/ShowHidden.js"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-476124-1']);
+    _gaq.push(['_setDomainName', 'cnblogs.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</SCRIPT>
+</BODY></HTML>

@@ -1,0 +1,570 @@
+img {
+	border: 0px currentColor;
+}
+#MySignature {
+	margin-top: 10px;
+}
+.blog_topic {
+	margin-top: 10px; margin-left: 2em;
+}
+#blog_post_info_block {
+	margin-top: 20px;
+}
+#EntryTag {
+	font-size: 12px;
+}
+.topicListFooter {
+	text-align: right; margin-top: 10px; margin-right: 10px;
+}
+#divRefreshComments {
+	text-align: right; font-size: 12px; margin-right: 10px; margin-bottom: 5px;
+}
+.commentTextBox {
+	width: 480px; height: 220px;
+}
+.commenttb {
+	width: 320px;
+}
+.tb_comment_name {
+	width: 200px;
+}
+#MyIng {
+	margin-top: 5px;
+}
+.ing_title {
+	text-align: center; font-weight: bold;
+}
+.ing_body {
+	margin-top: 5px; margin-bottom: 5px; word-break: break-all;
+}
+.ing_date {
+	text-align: center; color: gray; font-size: 11px;
+}
+.ing_footer {
+	text-align: right; margin-right: 5px;
+}
+#divNewMsg {
+	text-align: center; margin-top: 2px;
+}
+#divSendMsg {
+	
+}
+.commentform table td input {
+	margin: 2px auto;
+}
+.sendMsg2This:link {
+	background: url("/images/icoMsg.gif") no-repeat left top; font-size: 12px; text-decoration: none;
+}
+.sendMsg2This:visited {
+	background: url("/images/icoMsg.gif") no-repeat left top; font-size: 12px; text-decoration: none;
+}
+.sendMsg2This:active {
+	background: url("/images/icoMsg.gif") no-repeat left top; font-size: 12px; text-decoration: none;
+}
+.sendMsg2This:hover {
+	background: url("/images/icoMsg.gif") no-repeat left bottom;
+}
+.RecentComment {
+	overflow: hidden;
+}
+.cnblogs_code {
+	margin: 5px 0px; padding: 5px; border: 1px solid rgb(204, 204, 204); overflow: auto; font-family: Courier New; font-size: 12px; word-break: break-all; background-color: rgb(245, 245, 245);
+}
+.cnblogs_code pre {
+	font-size: 12px;
+}
+.cnblogs_code span {
+	font-family: Courier New; font-size: 12px;
+}
+.cnblogs_code_Collapse {
+	padding: 2px; border: 1px solid rgb(128, 128, 128); background-color: rgb(255, 255, 255);
+}
+.cnblogs_code_collapse {
+	padding: 2px; border: 1px solid rgb(128, 128, 128); background-color: rgb(255, 255, 255);
+}
+.cnblogs_code_hide {
+	display: none;
+}
+.code_img_closed {
+	padding-right: 5px; vertical-align: middle;
+}
+.code_img_opened {
+	padding-right: 5px; vertical-align: middle;
+}
+.cnblogs_code_open {
+	margin-top: 5px;
+}
+.codeLineNumber {
+	color: rgb(0, 128, 128); padding-right: 10px; -moz-user-select: none;
+}
+.cnblogs_code ol {
+	color: rgb(0, 128, 128); margin-left: 0px;
+}
+.cnblogs_code ol li {
+	list-style-image: none;
+}
+.cnblogs_code ol li span {
+	color: rgb(0, 0, 0);
+}
+.cnblogs_code_toolbar a:hover {
+	border: currentColor !important; background-color: rgb(245, 245, 245) !important;
+}
+.cnblogs_code_toolbar a:link {
+	border: currentColor !important; background-color: rgb(245, 245, 245) !important;
+}
+.cnblogs_code_toolbar a:visited {
+	border: currentColor !important; background-color: rgb(245, 245, 245) !important;
+}
+.cnblogs_code_toolbar a:active {
+	border: currentColor !important; background-color: rgb(245, 245, 245) !important;
+}
+.cnblogs_code_toolbar a:link img {
+	border: currentColor !important; background-color: rgb(245, 245, 245) !important;
+}
+.cnblogs_code_toolbar a:visited img {
+	border: currentColor !important; background-color: rgb(245, 245, 245) !important;
+}
+.desc_img {
+	float: right;
+}
+.MsoNormal {
+	line-height: 150%; font-size: 13px;
+}
+.div_my_zzk {
+	margin-top: 5px; margin-bottom: 5px;
+}
+.input_my_zzk {
+	width: 100px; height: 20px; vertical-align: middle;
+}
+input.btn_my_zzk {
+	padding: 2px; font-size: 12px; vertical-align: middle;
+}
+pre {
+	margin-top: 0px; margin-bottom: 0px;
+}
+pre {
+	white-space: pre-wrap; word-wrap: break-word;
+}
+.divPostCommentBox {
+	width: 500px; float: left;
+}
+.CommentBoxNav {
+	width: 100px; line-height: 120%; font-size: 12px; margin-top: 20px; float: right;
+}
+.comment_pager {
+	text-align: left; padding-bottom: 5px;
+}
+.comment_pager_current {
+	color: red;
+}
+.dp-highlighter {
+	margin: 18px 0px !important; width: 99%; overflow: auto; padding-top: 1px; font-family: "Consolas", "Courier New", Courier, mono, serif; font-size: 12px; background-color: rgb(231, 229, 220);
+}
+.dp-highlighter ol {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter ol li {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter ol li span {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter a {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter a:hover {
+	margin: 0px; padding: 0px; border: currentColor;
+}
+.dp-highlighter .bar {
+	padding-left: 45px;
+}
+.collapsed.dp-highlighter .bar {
+	padding-left: 0px;
+}
+.nogutter.dp-highlighter .bar {
+	padding-left: 0px;
+}
+.dp-highlighter ol {
+	list-style: decimal; margin: 0px 0px 1px 45px !important; padding: 0px; color: rgb(92, 92, 92); background-color: rgb(255, 255, 255);
+}
+.nogutter.dp-highlighter ol {
+	list-style: none !important; margin-left: 0px !important;
+}
+.nogutter.dp-highlighter ol li {
+	list-style: none !important; margin-left: 0px !important;
+}
+.dp-highlighter ol li {
+	margin: 0px !important; padding: 0px 3px 0px 10px !important; color: rgb(92, 92, 92); line-height: 14px; border-left-color: rgb(108, 226, 108); border-left-width: 3px; border-left-style: solid; list-style-type: decimal-leading-zero; list-style-position: outside !important; list-style-image: none; background-color: rgb(248, 248, 248);
+}
+.dp-highlighter .columns div {
+	margin: 0px !important; padding: 0px 3px 0px 10px !important; color: rgb(92, 92, 92); line-height: 14px; border-left-color: rgb(108, 226, 108); border-left-width: 3px; border-left-style: solid; list-style-type: decimal-leading-zero; list-style-position: outside !important; list-style-image: none; background-color: rgb(248, 248, 248);
+}
+.nogutter.dp-highlighter ol li {
+	border: 0px currentColor;
+}
+.nogutter.dp-highlighter .columns div {
+	border: 0px currentColor;
+}
+.dp-highlighter .columns {
+	width: 100%; color: gray; overflow: hidden; background-color: rgb(248, 248, 248);
+}
+.dp-highlighter .columns div {
+	padding-bottom: 5px;
+}
+.dp-highlighter ol li.alt {
+	color: inherit; background-color: rgb(255, 255, 255);
+}
+.dp-highlighter ol li span {
+	color: black; background-color: inherit;
+}
+.collapsed.dp-highlighter ol {
+	margin: 0px;
+}
+.collapsed.dp-highlighter ol li {
+	display: none;
+}
+.printing.dp-highlighter {
+	border: currentColor;
+}
+.printing.dp-highlighter .tools {
+	display: none !important;
+}
+.printing.dp-highlighter li {
+	display: list-item !important;
+}
+.dp-highlighter .tools {
+	font: 9px/normal Verdana, Geneva, Arial, Helvetica, sans-serif; padding: 3px 8px 10px 10px; color: silver; border-left-color: rgb(108, 226, 108); border-left-width: 3px; border-left-style: solid; font-size-adjust: none; font-stretch: normal; background-color: rgb(248, 248, 248);
+}
+.nogutter.dp-highlighter .tools {
+	border-left-color: currentColor; border-left-width: 0px; border-left-style: none;
+}
+.collapsed.dp-highlighter .tools {
+	border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none;
+}
+.dp-highlighter .tools a {
+	color: rgb(160, 160, 160); font-size: 9px; text-decoration: none; margin-right: 10px; background-color: inherit;
+}
+.dp-highlighter .tools a:hover {
+	color: red; text-decoration: underline; background-color: inherit;
+}
+.dp-about {
+	margin: 0px; padding: 0px; color: rgb(51, 51, 51); background-color: rgb(255, 255, 255);
+}
+.dp-about table {
+	width: 100%; height: 100%; font-family: Tahoma, Verdana, Arial, sans-serif !important; font-size: 11px;
+}
+.dp-about td {
+	padding: 10px; vertical-align: top;
+}
+.dp-about .copy {
+	height: 95%; border-bottom-color: rgb(172, 168, 153); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.dp-about .title {
+	color: red; font-weight: bold; background-color: inherit;
+}
+.dp-about .para {
+	margin: 0px 0px 4px;
+}
+.dp-about .footer {
+	text-align: right; color: rgb(51, 51, 51); border-top-color: rgb(255, 255, 255); border-top-width: 1px; border-top-style: solid; background-color: rgb(236, 234, 219);
+}
+.dp-about .close {
+	width: 60px; height: 22px; color: rgb(51, 51, 51); font-family: Tahoma, Verdana, Arial, sans-serif !important; font-size: 11px; background-color: rgb(236, 234, 219);
+}
+.dp-highlighter .comment {
+	color: rgb(0, 130, 0); background-color: inherit;
+}
+.dp-highlighter .comments {
+	color: rgb(0, 130, 0); background-color: inherit;
+}
+.dp-highlighter .string {
+	color: blue; background-color: inherit;
+}
+.dp-highlighter .keyword {
+	color: rgb(0, 102, 153); font-weight: bold; background-color: inherit;
+}
+.dp-highlighter .preprocessor {
+	color: gray; background-color: inherit;
+}
+#commentform_title {
+	padding: 0px 0px 0px 25px; margin-bottom: 10px; background-image: url("http://static.cnblogs.com/images/icon_addcomment.gif"); background-repeat: no-repeat;
+}
+div.commentform input.author {
+	padding: 4px 4px 4px 30px; border: 1px solid rgb(204, 204, 204); width: 300px; font-size: 13px; background-image: url("http://static.cnblogs.com/images/icon_form.gif"); background-repeat: no-repeat;
+}
+div.commentform input.email {
+	padding: 4px 4px 4px 30px; border: 1px solid rgb(204, 204, 204); width: 300px; font-size: 13px; background-image: url("http://static.cnblogs.com/images/icon_form.gif"); background-repeat: no-repeat;
+}
+div.commentform input.url {
+	padding: 4px 4px 4px 30px; border: 1px solid rgb(204, 204, 204); width: 300px; font-size: 13px; background-image: url("http://static.cnblogs.com/images/icon_form.gif"); background-repeat: no-repeat;
+}
+div.commentform input.author {
+	background-position: 3px -3px;
+}
+div.commentform input.email {
+	background-position: 3px -33px;
+}
+div.commentform input.url {
+	background-position: 3px -63px;
+}
+div.commentform textarea {
+	width: 450px; height: 300px; font-size: 13px;
+}
+div.commentform p {
+	line-height: 20px; margin-top: 10px;
+}
+.commentbox_title {
+	width: 450px;
+}
+.commentbox_title_left {
+	float: left;
+}
+.commentbox_title_right {
+	height: 22px; float: right;
+}
+.login_tips {
+	padding: 0px 0px 10px 25px; font-weight: bold; margin-top: 10px; background-image: url("http://static.cnblogs.com/images/icon_addcomment.gif"); background-repeat: no-repeat;
+}
+.login_tips a {
+	text-decoration: underline;
+}
+.clear {
+	clear: both;
+}
+.comment_quote {
+	padding: 5px; border: 1px solid rgb(204, 204, 204);
+}
+.comment_icon {
+	vertical-align: middle;
+}
+#comment_nav {
+	text-align: right;
+}
+#comment_nav a {
+	padding-left: 10px;
+}
+.ad_commentbox_up {
+	margin-left: 5px;
+}
+.ad_commentbox_up a {
+	padding-left: 10px;
+}
+#digg_block {
+	margin-top: 10px;
+}
+#author_profile {
+	width: 280px; color: rgb(0, 0, 0); font-size: 12px; margin-top: 0px; margin-bottom: 10px; margin-left: 0px; float: left;
+}
+#author_profile a:hover {
+	text-decoration: underline;
+}
+.author_avatar {
+	border: 0px currentColor; padding-top: 5px; padding-left: 2px; margin-right: 5px; vertical-align: top; float: left;
+}
+.author_profile_title {
+	color: rgb(102, 102, 102); font-weight: bold;
+}
+.author_profile_info {
+	line-height: 18px; float: left;
+}
+#author_profile_follow {
+	
+}
+#author_profile_follow a:link {
+	
+}
+#div_digg {
+	width: 120px; text-align: center; font-size: 12px; margin-top: 10px; margin-right: 30px; margin-bottom: 10px; float: right;
+}
+.diggit {
+	background: url("http://static.cnblogs.com/images/upup.gif") no-repeat; width: 46px; height: 52px; text-align: center; padding-top: 5px; margin-top: 2px; float: left; cursor: pointer;
+}
+.diggnum {
+	color: rgb(7, 93, 179); font-family: Verdana; font-size: 14px;
+}
+.buryit {
+	background: url("http://static.cnblogs.com/images/downdown.gif") no-repeat; width: 46px; height: 52px; text-align: center; padding-top: 5px; margin-top: 2px; margin-left: 20px; float: right; cursor: pointer;
+}
+.burynum {
+	color: rgb(7, 93, 179); font-family: Verdana; font-size: 14px;
+}
+.diggword {
+	color: gray; font-size: 12px; margin-top: 5px; margin-left: 0px;
+}
+a.digg_gray:link {
+	color: gray; text-decoration: underline;
+}
+a.digg_gray:visited {
+	color: gray; text-decoration: underline;
+}
+a.digg_gray:hover {
+	color: red; text-decoration: underline;
+}
+a.digg_gray:active {
+	color: gray; text-decoration: underline;
+}
+a.site_hot:visited {
+	color: red; text-decoration: none;
+}
+a.site_hot:active {
+	color: red; text-decoration: none;
+}
+a.site_hot:link {
+	color: red; text-decoration: none;
+}
+a.site_hot:hover {
+	color: red; text-decoration: underline;
+}
+.ad_bottom_text {
+	line-height: 150%;
+}
+#profile_block {
+	text-align: left; line-height: 1.5; margin-top: 5px;
+}
+.ing_date {
+	color: gray;
+}
+ol {
+	margin-left: 2em;
+}
+ol li {
+	list-style-type: decimal;
+}
+.bq_post_comment {
+	margin: 0px 0px 5px; padding: 10px; border: 1px solid rgb(221, 221, 221); line-height: 180%; font-style: normal;
+}
+#post_next_prev {
+	line-height: 1.8; font-size: 12px;
+}
+.post_next_prev_date {
+	color: gray;
+}
+#post_next_prev a.p_n_p_prefix:link {
+	text-decoration: none;
+}
+#post_next_prev a.p_n_p_prefix:hover {
+	text-decoration: underline;
+}
+#side_ing_block {
+	line-height: 1.5; overflow: hidden;
+}
+#side_ing_block ul li {
+	padding: 0px 0px 0px 20px; background-image: url("http://static.cnblogs.com/images/icon_voice.gif"); background-repeat: no-repeat;
+}
+a.ing_lnk:link {
+	border: 0px currentColor; color: gray; text-decoration: none;
+}
+a.ing_lnk:active {
+	border: 0px currentColor; color: gray; text-decoration: none;
+}
+a.ing_lnk:visited {
+	border: 0px currentColor; color: gray; text-decoration: none;
+}
+.itnews {
+	line-height: 150%;
+}
+.job_offer_list {
+	line-height: 150%;
+}
+blockquote {
+	padding: 5px 10px; border: 2px solid rgb(239, 239, 239); color: rgb(51, 51, 51); margin-top: 10px; margin-bottom: 10px; margin-left: 25px;
+}
+.c_ad_block {
+	line-height: 1.5; margin-top: 10px;
+}
+#grade_flag {
+	font-size: 12px;
+}
+div.commentform textarea.comment_textarea {
+	line-height: 1.6;
+}
+.c_b_p_desc {
+	line-height: 1.5; text-indent: 2em; overflow: hidden; word-break: break-all; word-wrap: break-word;
+}
+.c_b_p_desc_readmore {
+	padding-left: 5px;
+}
+.c_b_p_link_desc {
+	margin-top: 2px;
+}
+#green_channel {
+	padding: 10px 5px; border: 1px dashed rgb(192, 192, 192); width: 390px; color: rgb(0, 0, 0); font-size: 9pt; margin-top: 10px; margin-bottom: 0px;
+}
+#green_channel a {
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAkCAYAAABIdFAMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAHhJREFUeNo8zjsOxCAMBFB/KEAUFFR0Cbng3nQPw68ArZdAlOZppPFIBhH5EAB8b+Tlt9MYQ6i1BuqFaq1CKSVcxZ2Acs6406KUgpt5/LCKuVgz5BDCSb13ZO99ZOdcZGvt4mJjzMVKqcha68iIePB86GAiOv8CDADlIUQBs7MD3wAAAABJRU5ErkJggg%3D%3D") repeat-x; padding: 3px 8px; color: rgb(255, 255, 255); font-size: 9pt; font-weight: bold; text-decoration: none; margin-right: 10px; display: inline-block; cursor: pointer; -moz-border-radius: 5px; -webkit-border-radius: 10px; -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
+#green_channel a:hover {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAyCAYAAACd+7GKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAClJREFUeNpi/v//vwMTAwPDfzjBgMpFI/7hFSOT9Y8qRuF3JLoHAQIMAHYtMmRA+CugAAAAAElFTkSuQmCC");
+}
+#green_channel #green_channel_digg {
+	background-color: rgb(45, 174, 191);
+}
+#green_channel #green_channel_follow {
+	background-color: rgb(227, 49, 0);
+}
+#green_channel #green_channel_favorite {
+	background-color: rgb(255, 181, 21);
+}
+#green_channel #green_channel_contact {
+	color: rgb(85, 85, 85); background-color: rgb(238, 238, 238);
+}
+#green_channel #green_channel_weibo img {
+	border: currentColor; vertical-align: middle;
+}
+#green_channel #green_channel_weibo {
+	padding: 3px 2px; -moz-border-radius: none; -webkit-border-radius: none; -moz-box-shadow: none; -webkit-box-shadow: none; text-shadow: none;
+}
+#cnblogs_post_body ul {
+	list-style-type: disc;
+}
+#cnblogs_post_body ul {
+	margin-left: 45px;
+}
+#cnblogs_post_body table {
+	margin: 0px auto; border: 1px solid rgb(192, 192, 192); border-collapse: collapse;
+}
+#cnblogs_post_body th {
+	padding: 3px; border: 1px solid rgb(192, 192, 192); border-collapse: collapse;
+}
+#cnblogs_post_body td {
+	padding: 3px; border: 1px solid rgb(192, 192, 192); border-collapse: collapse;
+}
+.ad_text_commentbox {
+	margin-top: 5px; margin-bottom: 5px;
+}
+a.comment_uploadimg_a {
+	font-size: 12px;
+}
+#site_nav_under {
+	margin-top: 5px;
+}
+#site_nav_under a {
+	margin-right: 10px;
+}
+#ad_under_comment2 {
+	margin-bottom: 5px;
+}
+#ad_under_comment2 img {
+	margin-bottom: 5px;
+}
+.recent_comment_author {
+	text-align: right; margin-right: 4px;
+}
+.cnblogs_code_toolbar {
+	margin-top: 5px;
+}
+.cnblogs_code_toolbar span {
+	padding-right: 5px;
+}
+.comment_btn {
+	margin: 0px; padding: 0px; width: 68px; height: 26px; line-height: 22px;
+}
+#commentbox_opt a {
+	padding-left: 10px;
+}
+#taglist_title {
+	margin-bottom: 10px;
+}
+#taglist td {
+	padding: 5px 20px 5px 10px;
+}

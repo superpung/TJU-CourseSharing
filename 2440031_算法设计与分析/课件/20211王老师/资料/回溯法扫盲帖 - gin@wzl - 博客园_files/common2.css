@@ -1,0 +1,48 @@
+p {
+	margin: 5px auto; text-indent: 0px;
+}
+.postBody p {
+	margin: 5px auto;
+}
+.postCon p {
+	margin: 5px auto;
+}
+.postBody p {
+	text-indent: 0px;
+}
+.postCon p {
+	text-indent: 0px;
+}
+.cnblogs_code span {
+	line-height: 1.5;
+}
+.login_tips a {
+	text-decoration: underline;
+}
+#div_digg .diggnum {
+	line-height: 1.5em;
+}
+#div_digg .burynum {
+	line-height: 1.5em;
+}
+#green_channel a:link {
+	border: currentColor; color: rgb(255, 255, 255);
+}
+#green_channel a:visited {
+	border: currentColor; color: rgb(255, 255, 255);
+}
+#green_channel a:active {
+	border: currentColor; color: rgb(255, 255, 255);
+}
+.cnblogs_code {
+	font-family: Courier New; font-size: 12px;
+}
+.cnblogs_code pre {
+	font-family: Courier New; font-size: 12px;
+}
+.cnblogs_code span {
+	font-family: Courier New; font-size: 12px;
+}
+#cnblogs_post_body ul li {
+	list-style: inherit;
+}
