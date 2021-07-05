@@ -10,7 +10,7 @@
    :maxdepth: 2
    :caption: Contents:
 
-
+   TOC
 
 Indices and tables
 ==================
