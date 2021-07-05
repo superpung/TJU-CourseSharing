@@ -33,7 +33,7 @@ release = 'v1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-	'recommonmark'
+	'recommonmark', 'sphinx_markdown_tables'
 ]
 source_parsers = {
     '.md': CommonMarkParser,
