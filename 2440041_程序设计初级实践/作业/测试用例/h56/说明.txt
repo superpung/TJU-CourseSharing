@@ -1,0 +1,4 @@
+replaceTxtFileContent("xxx/before", "to", "")
+
+ 对 before目录处理，应该得到 after目录下面的内容
+不能仅仅用眼睛看，看看你们做的结果用md5check检查一下 看看和after下面的文件一样吗
