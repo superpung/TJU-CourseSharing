@@ -8,6 +8,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/SuperPung/TJU-CourseSharing)
 [![GitHub license](https://img.shields.io/github/license/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/blob/main/LICENSE)
 ![GitHub repo size](https://img.shields.io/github/repo-size/SuperPung/TJU-CourseSharing)
+[![Documentation Status](https://readthedocs.org/projects/tju-coursesharing/badge/?version=latest)](https://tju-coursesharing.readthedocs.io/en/latest/?badge=latest)
 
 ## 前言
 
