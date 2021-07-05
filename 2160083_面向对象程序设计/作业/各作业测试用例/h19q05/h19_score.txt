@@ -1,0 +1,7 @@
+zhangsan,语文,90;
+zhangsan,数学,90;
+zhaoliu,政治,80;
+zhangsan,政治,90;
+lisi,数学,85;
+lisi,英语,80;
+wangwu,数学,81;

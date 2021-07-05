@@ -1,0 +1,67 @@
+[A.heavyTank live=true x=90 y=90 health=500] 攻击 [B.base live=true x=100 y=100 health=1000] 攻击后 health=900
+[A.mediumTank live=true x=120 y=120 health=300] 攻击 [B.dog live=true x=128 y=128 health=100] 攻击后 health=50
+[B.rifleSoldier live=true x=133 y=133 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=300] 攻击后 health=290
+[B.RPGSoldier live=true x=132 y=132 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=290] 攻击后 health=270
+[B.dog live=true x=128 y=128 health=50] 攻击 [A.mediumTank live=true x=120 y=120 health=270] 攻击后 health=260
+[B.heavyTank live=true x=190 y=190 health=500] 攻击 [C.base live=true x=200 y=200 health=1000] 攻击后 health=900
+[B.mediumTank live=true x=220 y=220 health=300] 攻击 [C.dog live=true x=228 y=228 health=100] 攻击后 health=50
+[C.rifleSoldier live=true x=233 y=233 health=100] 攻击 [B.mediumTank live=true x=220 y=220 health=300] 攻击后 health=290
+[C.RPGSoldier live=true x=232 y=232 health=100] 攻击 [B.mediumTank live=true x=220 y=220 health=290] 攻击后 health=270
+[C.dog live=true x=228 y=228 health=50] 攻击 [B.mediumTank live=true x=220 y=220 health=270] 攻击后 health=260
+[C.heavyTank live=true x=290 y=290 health=500] 攻击 [B.mediumTank live=true x=220 y=220 health=260] 攻击后 health=160
+第0 轮攻击
+[A.heavyTank live=true x=90 y=90 health=500] 攻击 [B.base live=true x=100 y=100 health=900] 攻击后 health=800
+[A.mediumTank live=true x=120 y=120 health=260] 攻击 [B.dog live=true x=128 y=128 health=50] 攻击后 health=0
+[B.rifleSoldier live=true x=133 y=133 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=260] 攻击后 health=250
+[B.RPGSoldier live=true x=132 y=132 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=250] 攻击后 health=230
+[B.heavyTank live=true x=190 y=190 health=500] 攻击 [C.base live=true x=200 y=200 health=900] 攻击后 health=800
+[B.mediumTank live=true x=220 y=220 health=160] 攻击 [C.dog live=true x=228 y=228 health=50] 攻击后 health=0
+[C.rifleSoldier live=true x=233 y=233 health=100] 攻击 [B.mediumTank live=true x=220 y=220 health=160] 攻击后 health=150
+[C.RPGSoldier live=true x=232 y=232 health=100] 攻击 [B.mediumTank live=true x=220 y=220 health=150] 攻击后 health=130
+[C.heavyTank live=true x=290 y=290 health=500] 攻击 [B.mediumTank live=true x=220 y=220 health=130] 攻击后 health=30
+第1 轮攻击
+[A.heavyTank live=true x=90 y=90 health=500] 攻击 [B.base live=true x=100 y=100 health=800] 攻击后 health=700
+[A.mediumTank live=true x=120 y=120 health=230] 攻击 [B.barrack live=true x=130 y=130 health=200] 攻击后 health=150
+[B.rifleSoldier live=true x=133 y=133 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=230] 攻击后 health=220
+[B.RPGSoldier live=true x=132 y=132 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=220] 攻击后 health=200
+[B.heavyTank live=true x=190 y=190 health=500] 攻击 [C.base live=true x=200 y=200 health=800] 攻击后 health=700
+[B.mediumTank live=true x=220 y=220 health=30] 攻击 [C.barrack live=true x=230 y=230 health=200] 攻击后 health=150
+[C.rifleSoldier live=true x=233 y=233 health=100] 攻击 [B.mediumTank live=true x=220 y=220 health=30] 攻击后 health=20
+[C.RPGSoldier live=true x=232 y=232 health=100] 攻击 [B.mediumTank live=true x=220 y=220 health=20] 攻击后 health=0
+第2 轮攻击
+[A.heavyTank live=true x=90 y=90 health=500] 攻击 [B.base live=true x=100 y=100 health=700] 攻击后 health=600
+[A.mediumTank live=true x=120 y=120 health=200] 攻击 [B.barrack live=true x=130 y=130 health=150] 攻击后 health=100
+[B.rifleSoldier live=true x=133 y=133 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=200] 攻击后 health=190
+[B.RPGSoldier live=true x=132 y=132 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=190] 攻击后 health=170
+[B.heavyTank live=true x=190 y=190 health=500] 攻击 [C.base live=true x=200 y=200 health=700] 攻击后 health=600
+第3 轮攻击
+[A.heavyTank live=true x=90 y=90 health=500] 攻击 [B.base live=true x=100 y=100 health=600] 攻击后 health=500
+[A.mediumTank live=true x=120 y=120 health=170] 攻击 [B.barrack live=true x=130 y=130 health=100] 攻击后 health=50
+[B.rifleSoldier live=true x=133 y=133 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=170] 攻击后 health=160
+[B.RPGSoldier live=true x=132 y=132 health=100] 攻击 [A.mediumTank live=true x=120 y=120 health=160] 攻击后 health=140
+[B.heavyTank live=true x=190 y=190 health=500] 攻击 [C.base live=true x=200 y=200 health=600] 攻击后 health=500
+第4 轮攻击
+[A.base live=true x=0 y=0 health=1000]
+[A.barrack live=true x=30 y=30 health=200]
+[A.warFactory live=true x=60 y=60 health=200]
+[A.rifleSoldier live=true x=33 y=33 health=100]
+[A.RPGSoldier live=true x=32 y=32 health=100]
+[A.dog live=true x=28 y=28 health=100]
+[A.heavyTank live=true x=90 y=90 health=500]
+[A.mediumTank live=true x=120 y=120 health=140]
+[B.base live=true x=100 y=100 health=500]
+[B.barrack live=true x=130 y=130 health=50]
+[B.warFactory live=true x=160 y=160 health=200]
+[B.rifleSoldier live=true x=133 y=133 health=100]
+[B.RPGSoldier live=true x=132 y=132 health=100]
+[B.dog live=false x=128 y=128 health=0]
+[B.heavyTank live=true x=190 y=190 health=500]
+[B.mediumTank live=false x=220 y=220 health=0]
+[C.base live=true x=200 y=200 health=500]
+[C.barrack live=true x=230 y=230 health=150]
+[C.warFactory live=true x=260 y=260 health=200]
+[C.rifleSoldier live=true x=233 y=233 health=100]
+[C.RPGSoldier live=true x=232 y=232 health=100]
+[C.dog live=false x=228 y=228 health=0]
+[C.heavyTank live=true x=290 y=290 health=500]
+[C.mediumTank live=true x=320 y=320 health=300]
