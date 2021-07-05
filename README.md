@@ -68,7 +68,8 @@
 
 ### 下载
 
-若要下载单个文件夹，复制该文件夹的网址，粘贴入 [DownGit](https://minhaskamal.github.io/DownGit/#/home) 中，点击 Download 即可。
+- 若要下载单个文件夹，复制该文件夹的网址，粘贴入 [DownGit](https://minhaskamal.github.io/DownGit/#/home) 中，点击 Download 即可
+- 安装 Chrome 浏览器扩展程序 [GitZip for github](https://chrome.google.com/webstore/detail/gitzip-for-github/ffabmkklhbepgcgfonabamgnfafbdlkn)，双击文件夹即可下载
 
 ## 贡献
 
