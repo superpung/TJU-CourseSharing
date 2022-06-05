@@ -98,7 +98,7 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！
 
 其他部分的版权归属于其作者。
 
-如果你认为本仓库的一些文件侵犯了你的权益，请提 [Issue](https://github.com/SuperPung/TJU-CourseSharing/issues) 或 [向我们发送邮件](mailto:me@superpung.xyz)，我们将会从仓库中彻底清除这些文件。
+如果你认为本仓库的一些文件侵犯了你的权益，请提 [Issue](https://github.com/SuperPung/TJU-CourseSharing/issues) 或 [向我们发送邮件](mailto:i@superpung.cn)，我们将会从仓库中彻底清除这些文件。
 
 当然，我们也不会为收集到的资料收费，或是尝试收取捐赠。我们只是尝试为后来的同学节省一些时间。
 
