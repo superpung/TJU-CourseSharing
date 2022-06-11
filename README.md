@@ -1,5 +1,6 @@
 <div align="center">
-  <h1>天津大学课程共享计划</h1>
+  <img src="https://github.com/SuperPung/TJU-CourseSharing/raw/main/header.png" alt="TJU-CourseSharing" />
+  <h3>天津大学课程共享计划</h3>
   <p><a href="https://tju.repus.cn" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=tju.repus.cn&message=TJU-CourseSharing&color=gray&labelColor=2C68C3&style=flat&logo=MicroSoftOneDrive&logoColor=white" alt="GitHub" /></a></p>
 
 
