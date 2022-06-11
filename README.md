@@ -1,13 +1,17 @@
-# 天津大学课程共享计划
+<div align="center">
+  <h1>天津大学课程共享计划</h1>
+  <p><a href="https://tju.repus.cn" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=tju.repus.cn&message=TJU-CourseSharing&color=gray&labelColor=2C68C3&style=flat&logo=MicroSoftOneDrive&logoColor=white" alt="GitHub" /></a></p>
 
-![GitHub watchers](https://img.shields.io/github/watchers/SuperPung/TJU-CourseSharing)
-[![GitHub stars](https://img.shields.io/github/stars/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/network)
-[![GitHub issues](https://img.shields.io/github/issues/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/issues)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/SuperPung/TJU-CourseSharing)
-![GitHub contributors](https://img.shields.io/github/contributors/SuperPung/TJU-CourseSharing)
-[![GitHub license](https://img.shields.io/github/license/SuperPung/TJU-CourseSharing)](https://github.com/SuperPung/TJU-CourseSharing/blob/main/LICENSE)
-![GitHub repo size](https://img.shields.io/github/repo-size/SuperPung/TJU-CourseSharing)
+
+  <img style="display: inline-block;" src="https://img.shields.io/github/watchers/SuperPung/TJU-CourseSharing" alt="GitHub watchers" />
+  <a href="https://github.com/SuperPung/TJU-CourseSharing/stargazers"><img style="display: inline-block;" src="https://img.shields.io/github/stars/SuperPung/TJU-CourseSharing" alt="GitHub stars" /></a>
+  <a href="https://github.com/SuperPung/TJU-CourseSharing/network"><img style="display: inline-block;" src="https://img.shields.io/github/forks/SuperPung/TJU-CourseSharing" alt="GitHub forks" /></a>
+  <a href="https://github.com/SuperPung/TJU-CourseSharing/issues"><img style="display: inline-block;" src="https://img.shields.io/github/issues/SuperPung/TJU-CourseSharing" alt="GitHub issues" /></a>
+  <a href="https://github.com/SuperPung/TJU-CourseSharing/pulls"><img style="display: inline-block;" src="https://img.shields.io/github/issues-pr-closed-raw/SuperPung/TJU-CourseSharing" alt="GitHub closed pull requests" /></a>
+  <img style="display: inline-block;" src="https://img.shields.io/github/contributors/SuperPung/TJU-CourseSharing" alt="GitHub contributors" />
+  <a href="https://github.com/SuperPung/TJU-CourseSharing/blob/main/LICENSE"><img style="display: inline-block;" src="https://img.shields.io/github/license/SuperPung/TJU-CourseSharing" alt="GitHub license" /></a>
+  <img style="display: inline-block;" src="https://img.shields.io/github/repo-size/SuperPung/TJU-CourseSharing" alt="GitHub repo size" />
+</div>
 
 
 ## 前言
