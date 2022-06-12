@@ -1,3 +1,0 @@
-enter three integers: You entered 1 2 3
-enter three integers: You entered 1 2 3
-enter three integers: You entered 1 2 3

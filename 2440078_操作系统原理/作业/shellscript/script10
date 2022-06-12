@@ -1,7 +1,0 @@
-args=
-until test ! "$#" -gt 0
-do
-	args="$1 $args"
-	shift
-done
-echo $args

@@ -1,9 +1,0 @@
-#!/bin/sh
-count=1
-while test $count -lt 21
-do
-	square=`expr $count \* $count`
-	cube=`expr $square \* $count`
-	echo "$count $square $cube"
-	count=`expr $count + 1`
-done

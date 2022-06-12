@@ -1,4 +1,0 @@
-case "$1" in
-	y|yes|YES|Yes|Y)	exit 0;;
-	*)			exit 1;;
-esac
