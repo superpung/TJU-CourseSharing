@@ -13,7 +13,7 @@
 - 实验一：人工神经网络实现基础
     - 利用我国上海交易所发布的上证指数数据，以季度为单位，实现一个神经网络以预测上证指数 2022 年 1 季度末的点位
     - 对 mnist 手写数字数据集，实现一个神经网络进行识别
-- 实验二：Q-Learning 算法，参见 [Q-Learning 简介](https://blog.superpung.cn/q-learning/)
+- 实验二：Q-Learning 算法，参见 [Q-Learning 简介](https://superpung.com/q-learning/)
 
 ### 考试
 

@@ -1,17 +1,17 @@
 <div align="center">
   <img src="./header.png" alt="TJU-CourseSharing" />
   <h3>天津大学课程共享计划</h3>
-  <p><a href="https://tju.repus.cn" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=tju.repus.cn&message=TJU-CourseSharing&color=gray&labelColor=2C68C3&style=flat&logo=MicroSoftOneDrive&logoColor=white" alt="GitHub" /></a></p>
+  <p><a href="https://cs.tjuse.com" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?label=cs.tjuse.com&message=TJU-CourseSharing&color=gray&labelColor=2C68C3&style=flat&logo=MicroSoftOneDrive&logoColor=white" alt="GitHub" /></a></p>
 
 
-  <img style="display: inline-block;" src="https://img.shields.io/github/watchers/SuperPung/TJU-CourseSharing" alt="GitHub watchers" />
-  <a href="https://github.com/SuperPung/TJU-CourseSharing/stargazers"><img style="display: inline-block;" src="https://img.shields.io/github/stars/SuperPung/TJU-CourseSharing" alt="GitHub stars" /></a>
-  <a href="https://github.com/SuperPung/TJU-CourseSharing/network"><img style="display: inline-block;" src="https://img.shields.io/github/forks/SuperPung/TJU-CourseSharing" alt="GitHub forks" /></a>
-  <a href="https://github.com/SuperPung/TJU-CourseSharing/issues"><img style="display: inline-block;" src="https://img.shields.io/github/issues/SuperPung/TJU-CourseSharing" alt="GitHub issues" /></a>
-  <a href="https://github.com/SuperPung/TJU-CourseSharing/pulls"><img style="display: inline-block;" src="https://img.shields.io/github/issues-pr-closed-raw/SuperPung/TJU-CourseSharing" alt="GitHub closed pull requests" /></a>
-  <img style="display: inline-block;" src="https://img.shields.io/github/contributors/SuperPung/TJU-CourseSharing" alt="GitHub contributors" />
-  <a href="https://github.com/SuperPung/TJU-CourseSharing/blob/main/LICENSE"><img style="display: inline-block;" src="https://img.shields.io/github/license/SuperPung/TJU-CourseSharing" alt="GitHub license" /></a>
-  <img style="display: inline-block;" src="https://img.shields.io/github/repo-size/SuperPung/TJU-CourseSharing" alt="GitHub repo size" />
+  <img style="display: inline-block;" src="https://img.shields.io/github/watchers/superpung/TJU-CourseSharing" alt="GitHub watchers" />
+  <a href="https://github.com/superpung/TJU-CourseSharing/stargazers"><img style="display: inline-block;" src="https://img.shields.io/github/stars/superpung/TJU-CourseSharing" alt="GitHub stars" /></a>
+  <a href="https://github.com/superpung/TJU-CourseSharing/network"><img style="display: inline-block;" src="https://img.shields.io/github/forks/superpung/TJU-CourseSharing" alt="GitHub forks" /></a>
+  <a href="https://github.com/superpung/TJU-CourseSharing/issues"><img style="display: inline-block;" src="https://img.shields.io/github/issues/superpung/TJU-CourseSharing" alt="GitHub issues" /></a>
+  <a href="https://github.com/superpung/TJU-CourseSharing/pulls"><img style="display: inline-block;" src="https://img.shields.io/github/issues-pr-closed-raw/superpung/TJU-CourseSharing" alt="GitHub closed pull requests" /></a>
+  <img style="display: inline-block;" src="https://img.shields.io/github/contributors/superpung/TJU-CourseSharing" alt="GitHub contributors" />
+  <a href="https://github.com/superpung/TJU-CourseSharing/blob/main/LICENSE"><img style="display: inline-block;" src="https://img.shields.io/github/license/superpung/TJU-CourseSharing" alt="GitHub license" /></a>
+  <img style="display: inline-block;" src="https://img.shields.io/github/repo-size/superpung/TJU-CourseSharing" alt="GitHub repo size" />
 </div>
 
 
@@ -57,12 +57,12 @@
 
 - [x] README
 - [x] 收录内容
-- [x] 网页，请访问 [tju.repus.cn](https://tju.repus.cn)
+- [x] 网页，请访问 [cs.tjuse.com](https://cs.tjuse.com)
 - [ ] ……
 
 ## 目录
 
-本项目收录的内容见 [收录内容](https://github.com/SuperPung/TJU-CourseSharing/blob/main/收录内容.md)。
+本项目收录的内容见 [收录内容](https://github.com/superpung/TJU-CourseSharing/blob/main/收录内容.md)。
 
 ## 使用
 
@@ -89,7 +89,7 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！
 
 ### 贡献方式
 
-参见 [贡献方式](https://github.com/SuperPung/TJU-CourseSharing/blob/main/贡献方式.md)。
+参见 [贡献方式](https://github.com/superpung/TJU-CourseSharing/blob/main/贡献方式.md)。
 
 ### 贡献者
 
@@ -103,7 +103,7 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！
 
 其他部分的版权归属于其作者。
 
-如果你认为本仓库的一些文件侵犯了你的权益，请提 [Issue](https://github.com/SuperPung/TJU-CourseSharing/issues) 或 [向我们发送邮件](mailto:tju@repus.cn)，我们将会从仓库中彻底清除这些文件。
+如果你认为本仓库的一些文件侵犯了你的权益，请提 [Issue](https://github.com/superpung/TJU-CourseSharing/issues) 或 [向我们发送邮件](mailto:admin@tjuse.com)，我们将会从仓库中彻底清除这些文件。
 
 当然，我们也不会为收集到的资料收费，或是尝试收取捐赠。我们只是尝试为后来的同学节省一些时间。
 
