@@ -8,7 +8,7 @@
 
 ### 平时
 
-2020 春季学期，疫情在家，平时有小测试和作业，有 5 个 MIT 的经典实验，可以参见 [我的实验](https://github.com/SuperPung/Computer-Systems-Lab-Assignments)。
+2020 春季学期，疫情在家，平时有小测试和作业，有 5 个 MIT 的经典实验，可以参见 [我的实验](https://github.com/superpung/Computer-Systems-Lab-Assignments)。
 
 ### 考试
 

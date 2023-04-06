@@ -6,11 +6,11 @@
 
 讲《数据结构（C 语言版）》内容，包括基础知识、线性表、栈和队列、串、数组和广义表、树和二叉树、图、查找、内部排序等内容。
 
-参见 [我的笔记](https://blog.superpung.xyz/data-structures-notes/)。
+参见 [我的笔记](https://superpung.com/data-structures-notes/)。
 
 ### 平时
 
-每周都会有实验作业，参见 [我的实验](https://github.com/SuperPung/Data-Structures-Experiments)，或 [这里](https://blog.superpung.xyz/data-structures-experiments/)。
+每周都会有实验作业，参见 [我的实验](https://github.com/superpung/data-structures-experiments)，或 [这里](https://superpung.com/data-structures-experiments/)。
 
 ### 考试
 

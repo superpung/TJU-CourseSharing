@@ -14,9 +14,9 @@
 
 第 5-8 周会安排去机房写代码。
 
-平时会留 20 道作业 h01-h20，用天大云盘。都是 Java 编程题，自己用 Eclipse 或 IntelliJ IDEA 做，可以参考一下 [我的作业](https://github.com/SuperPung/OOP_Homeworks)。有一个 [小工具](https://github.com/SuperPung/TJU-Drive-Crawling) 可以实时监测云盘有没有更新，因为老师会把作业批改结果传到云盘上。
+平时会留 20 道作业 h01-h20，用天大云盘。都是 Java 编程题，自己用 Eclipse 或 IntelliJ IDEA 做，可以参考一下 [我的作业](https://github.com/superpung/OOP_Homeworks)。有一个 [小工具](https://github.com/superpung/TJU-Drive-Crawling) 可以实时监测云盘有没有更新，因为老师会把作业批改结果传到云盘上。
 
-如果觉得从文本文件看成绩不方便，也可以用一下 [这个工具](https://github.com/SuperPung/Show-Scores)，可以直观查看自己或所有人的成绩。
+如果觉得从文本文件看成绩不方便，也可以用一下 [这个工具](https://github.com/superpung/Show-Scores)，可以直观查看自己或所有人的成绩。
 
 ### 考试
 

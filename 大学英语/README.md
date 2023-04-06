@@ -4,10 +4,10 @@
 
 《大学英语》在大一和大二开课，四个学期分别为：
 
-- [大学英语 1](https://github.com/SuperPung/TJU-CourseSharing/tree/main/大学英语/2111292_大学英语1)
-- [大学英语 2](https://github.com/SuperPung/TJU-CourseSharing/tree/main/大学英语/2111293_大学英语2)
-- [大学英语 3](https://github.com/SuperPung/TJU-CourseSharing/tree/main/大学英语/2111294_大学英语3)
-- [大学英语 4](https://github.com/SuperPung/TJU-CourseSharing/tree/main/大学英语/2111295_大学英语4)
+- [大学英语 1](https://github.com/superpung/TJU-CourseSharing/tree/main/大学英语/2111292_大学英语1)
+- [大学英语 2](https://github.com/superpung/TJU-CourseSharing/tree/main/大学英语/2111293_大学英语2)
+- [大学英语 3](https://github.com/superpung/TJU-CourseSharing/tree/main/大学英语/2111294_大学英语3)
+- [大学英语 4](https://github.com/superpung/TJU-CourseSharing/tree/main/大学英语/2111295_大学英语4)
 
 学校支持免听免修（见文件）。
 
@@ -57,7 +57,7 @@
 
 无法保证其准确性，毕竟每个人的看法都有所不同。
 
-**欢迎贡献！提 Issue 也可！具体参见 [贡献方式](https://github.com/SuperPung/TJU-CourseSharing/blob/main/贡献方式.md)。**
+**欢迎贡献！提 Issue 也可！具体参见 [贡献方式](https://github.com/superpung/TJU-CourseSharing/blob/main/贡献方式.md)。**
 
 #### 大学英语教学二部
 

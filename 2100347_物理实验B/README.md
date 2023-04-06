@@ -2,7 +2,7 @@
 
 ## 20212 学期 秦陆培
 
-了解更多见 [物理实验 A](https://github.com/SuperPung/TJU-CourseSharing/tree/main/2100346_物理实验A)。
+了解更多见 [物理实验 A](https://github.com/superpung/TJU-CourseSharing/tree/main/2100346_物理实验A)。
 
 部分实验列表（A 和 B 没分太清，互相补充。评价有主观因素，请仔细甄别。同时**欢迎贡献**！）：
 
