@@ -1,5 +1,7 @@
 # 人工智能基础
 
+更多参考：[#31](https://github.com/superpung/TJU-CourseSharing/issues/31)
+
 ## 21221 学期 金弟
 
 ### 简介
