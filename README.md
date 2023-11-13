@@ -89,7 +89,7 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！
 
 ### 贡献方式
 
-参见 [贡献方式](https://github.com/superpung/TJU-CourseSharing/blob/main/贡献方式.md)。
+参见 [贡献方式](https://github.com/superpung/TJU-CourseSharing/blob/main/CONTRIBUTING.md)。
 
 ### 贡献者
 
