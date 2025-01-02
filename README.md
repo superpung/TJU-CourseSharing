@@ -120,3 +120,13 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！
 [上海交通大学课程资料分享](https://github.com/c-hj/SJTU-Courses)
 
 [电子科技大学课程复习资料共享平台](https://github.com/Xovee/uestc-course)
+
+## Star History
+
+<a href="https://star-history.com/#superpung/TJU-CourseSharing&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=superpung/TJU-CourseSharing&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=superpung/TJU-CourseSharing&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=superpung/TJU-CourseSharing&type=Date" />
+ </picture>
+</a>
