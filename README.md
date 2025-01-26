@@ -121,6 +121,12 @@ Issue、PR、纠错、资料、选课/考试攻略，完全欢迎！
 
 [电子科技大学课程复习资料共享平台](https://github.com/Xovee/uestc-course)
 
+## 友情链接
+
+|项目|简介|
+|---|---|
+|[CityU GuideBook](https://penjc.github.io/CityU)|A comprehensive platform for CityUHK students.|
+
 ## Star History
 
 <a href="https://star-history.com/#superpung/TJU-CourseSharing&Date">
